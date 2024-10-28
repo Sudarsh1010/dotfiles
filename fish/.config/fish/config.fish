@@ -28,3 +28,7 @@ set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - | source
 
 set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi $PYTHONPATH
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
