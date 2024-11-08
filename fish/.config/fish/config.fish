@@ -32,3 +32,6 @@ set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi $PYTHONPATH
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+set --export GOPATH "$HOME/go"
+set --export PATH "$PATH:/usr/local/go/bin:$GOPATH/bin"

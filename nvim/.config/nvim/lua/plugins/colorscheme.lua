@@ -1,45 +1,27 @@
 return {
   {
-    "ellisonleao/gruvbox.nvim",
+    "sainnhe/gruvbox-material",
+    lazy = false,
     priority = 1000,
     config = function()
-      -- Default options:
-      require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "soft", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false,
-      })
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.g.gruvbox_material_enable_bold = 1
+      vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_background = "soft"
+      vim.g.gruvbox_material_foreground = "mix"
+      vim.g.gruvbox_material_transparent_background = 2
     end,
   },
 
   {
     "LazyVim/LazyVim",
-    opts = { colorscheme = "gruvbox" },
+    opts = { colorscheme = "gruvbox-material" },
   },
 
   -- modicator (auto color line number based on vim mode)
   {
     "mawkler/modicator.nvim",
-    dependencies = "ellisonleao/gruvbox.nvim",
+    dependencies = "sainnhe/gruvbox-material",
     init = function()
       -- These are required for Modicator to work
       vim.o.cursorline = false
