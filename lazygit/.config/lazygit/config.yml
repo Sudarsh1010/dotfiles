@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#fabd2f" # Gruvbox yellow
+      - bold
+    inactiveBorderColor:
+      - "#928374" # Gruvbox gray
+    optionsTextColor:
+      - "#83a598" # Gruvbox aqua
+    selectedLineBgColor:
+      - "#3c3836" # Gruvbox dark background
+    cherryPickedCommitBgColor:
+      - "#504945" # Gruvbox medium dark
+    cherryPickedCommitFgColor:
+      - "#fabd2f" # Gruvbox yellow
+    unstagedChangesColor:
+      - "#fb4934" # Gruvbox red
+    defaultFgColor:
+      - "#ebdbb2" # Gruvbox light foreground
+    searchingActiveBorderColor:
+      - "#d3869b" # Gruvbox pink
+
+  authorColors:
+    "*": "#bdae93" # Gruvbox light gray
