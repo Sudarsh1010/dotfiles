@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+gui:
+  theme:
+    activeBorderColor:
+      - "#c0a36e" # Kanagawa Dragon yellow/gold
+      - bold
+    inactiveBorderColor:
+      - "#727169" # Kanagawa Dragon gray
+    optionsTextColor:
+      - "#7e9cd8" # Kanagawa Dragon blue
+    selectedLineBgColor:
+      - "#2d4f67" # Kanagawa Dragon selection background
+    cherryPickedCommitBgColor:
+      - "#16161d" # Kanagawa Dragon dark background
+    cherryPickedCommitFgColor:
+      - "#c0a36e" # Kanagawa Dragon yellow/gold
+    unstagedChangesColor:
+      - "#c34043" # Kanagawa Dragon red
+    defaultFgColor:
+      - "#dcd7ba" # Kanagawa Dragon light foreground
+    searchingActiveBorderColor:
+      - "#957fb8" # Kanagawa Dragon purple
+  authorColors:
+    "*": "#c8c093" # Kanagawa Dragon light gray/tan
