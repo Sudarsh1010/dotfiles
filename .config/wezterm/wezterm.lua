@@ -44,6 +44,7 @@ config.window_background_opacity = 0.975
 config.macos_window_background_blur = 4
 
 config.enable_tab_bar = false
+config.enable_wayland = false
 
 config.window_decorations = "RESIZE"
 config.window_padding = {
