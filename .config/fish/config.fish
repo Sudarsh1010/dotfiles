@@ -1,12 +1,8 @@
+# source ~/.config/fish/themes/kanagawa-dragon.fish
+# Disable greeting
 set -g fish_greeting
 
-if status is-interactive
-    starship init fish | source
-end
-
-source ~/.config/fish/themes/kanagawa-dragon.fish
-
-# List Directory
+# Directories
 alias l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
@@ -20,20 +16,31 @@ abbr .3 'cd ../../..'
 abbr .4 'cd ../../../..'
 abbr .5 'cd ../../../../..'
 
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+# Always mkdir a path
 abbr mkdir 'mkdir -p'
 
-# pyenv
+# Paths
 set -Ux PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi
 
-pyenv init - | source
+set --export PATH \
+    $HOME/.pyenv/shims \
+    $HOME/.pyenv/bin \
+    $HOME/.bun/bin \
+    /usr/local/go/bin \
+    $HOME/go/bin \
+    $HOME/.cargo/bin \
+    $HOME/.nvm/versions/node/v20.17.0/bin \
+    /opt/homebrew/bin \
+    /usr/local/bin \
+    /usr/bin \
+    /bin \
+    /usr/sbin \
+    /sbin \
+    /opt/homebrew/sbin
 
-set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi $PYTHONPATH
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-set --export GOPATH "$HOME/go"
-set --export PATH "$PATH:/usr/local/go/bin:$GOPATH/bin"
+# Init in background
+function init_background --on-event fish_prompt
+    # starship init fish | source &
+    pyenv init --path | source &
+end
