@@ -1,12 +1,11 @@
 return {
   {
     "alexghergh/nvim-tmux-navigation",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       local nvim_tmux_nav = require("nvim-tmux-navigation")
       nvim_tmux_nav.setup({
         disable_when_zoomed = true,
-        -- defaults to false
         keybindings = {
           left = "<C-h>",
           down = "<C-j>",
@@ -18,14 +17,11 @@ return {
       })
     end,
   },
+
   {
     "aserowy/tmux.nvim",
     config = function()
-      return require("tmux").setup({
-        resize = {
-          enable_default_keybindings = false,
-        },
-      })
+      return require("tmux").setup()
     end,
   },
 }

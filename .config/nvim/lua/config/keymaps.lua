@@ -27,18 +27,17 @@ keymap.set("n", "te", ":tabedit<Return>", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
--- tmux/navigation
-keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true })
-keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true })
-keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true })
-keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true })
-
 keymap.del({ "n", "i", "v" }, "<A-j>")
 keymap.del({ "n", "i", "v" }, "<A-k>")
 keymap.del("n", "<C-Left>")
 keymap.del("n", "<C-Down>")
 keymap.del("n", "<C-Up>")
 keymap.del("n", "<C-Right>")
+
+keymap.set("n", "<C-h>", '<Cmd>lua require("tmux").move_left()<CR>', { silent = true })
+keymap.set("n", "<C-j>", '<Cmd>lua require("tmux").move_down()<CR>', { silent = true })
+keymap.set("n", "<C-k>", '<Cmd>lua require("tmux").move_top()<CR>', { silent = true })
+keymap.set("n", "<C-l>", '<Cmd>lua require("tmux").move_right()<CR>', { silent = true })
 
 keymap.set("n", "<M-h>", '<Cmd>lua require("tmux").resize_left()<CR>', { silent = true })
 keymap.set("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silent = true })
