@@ -40,17 +40,17 @@ local kanagawa = require("kanagawa-dragon")
 config.colors = kanagawa.colors
 config.force_reverse_video_cursor = kanagawa.force_reverse_video_cursor
 
-config.window_background_opacity = 0.975
-config.macos_window_background_blur = 4
+-- config.window_background_opacity = 0.975
+-- config.macos_window_background_blur = 4
 
 config.enable_tab_bar = false
 config.enable_wayland = false
 
 config.window_decorations = "RESIZE"
 config.window_padding = {
-	left = 8,
-	right = 8,
-	top = 2,
+	left = 0,
+	right = 0,
+	top = 4,
 	bottom = 0,
 }
 
