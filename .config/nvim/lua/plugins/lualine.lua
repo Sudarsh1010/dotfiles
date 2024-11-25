@@ -20,7 +20,7 @@ return {
 
     return {
       options = {
-        theme = "kanagawa",
+        theme = "gruvbox-material",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },

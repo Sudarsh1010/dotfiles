@@ -1,33 +1,23 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
-
 gui:
   theme:
     activeBorderColor:
-      - "#c0a36e" # Kanagawa Dragon yellow/gold
+      - "#fabd2f" # Gruvbox yellow
       - bold
     inactiveBorderColor:
-      - "#727169" # Kanagawa Dragon gray
+      - "#928374" # Gruvbox gray
     optionsTextColor:
-      - "#ffffff" # White for maximum readability
+      - "#83a598" # Gruvbox aqua
     selectedLineBgColor:
-      - "#44475a" # Muted dark blue-gray for better contrast
+      - "#3c3836" # Gruvbox dark background
     cherryPickedCommitBgColor:
-      - "#16161d" # Kanagawa Dragon dark background
+      - "#504945" # Gruvbox medium dark
     cherryPickedCommitFgColor:
-      - "#c0a36e" # Kanagawa Dragon yellow/gold
+      - "#fabd2f" # Gruvbox yellow
     unstagedChangesColor:
-      - "#e82424" # Brighter red
+      - "#fb4934" # Gruvbox red
     defaultFgColor:
-      - "#dcd7ba" # Kanagawa Dragon light foreground
+      - "#ebdbb2" # Gruvbox light foreground
     searchingActiveBorderColor:
-      - "#957fb8" # Kanagawa Dragon purple
-    markedBaseCommitFgColor:
-      - ""
-    markedBaseCommitBgColor:
-      - ""
-    inactiveViewSelectedLineBgColor:
-      - "#44475a" # Use same muted background for inactive views
-
+      - "#d3869b" # Gruvbox pink
   authorColors:
-    "*": "#c8c093" # Kanagawa Dragon light gray/tan
-
+    "*": "#bdae93" # Gruvbox light gray

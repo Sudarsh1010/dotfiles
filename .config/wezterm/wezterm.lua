@@ -31,17 +31,13 @@ end)
 config.font = wezterm.font("GeistMono Nerd Font")
 -- config.font = wezterm.font("Terminess Nerd Font", { weight = "DemiBold" })
 
-config.font_size = 16.5
-config.line_height = 1.3
+config.font_size = 14
+config.line_height = 1.2
 
--- config.color_scheme = "Gruvbox Material (Gogh)"
--- config.color_scheme = "Kanagawa Dragon (Gogh)"
-local kanagawa = require("kanagawa-dragon")
-config.colors = kanagawa.colors
-config.force_reverse_video_cursor = kanagawa.force_reverse_video_cursor
+config.color_scheme = "Gruvbox Material (Gogh)"
 
--- config.window_background_opacity = 0.975
--- config.macos_window_background_blur = 4
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 8
 
 config.enable_tab_bar = false
 config.enable_wayland = false
@@ -50,8 +46,6 @@ config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 4,
-	bottom = 0,
 }
 
 return config

@@ -1,42 +1,26 @@
 return {
   {
-    "rebelot/kanagawa.nvim",
+    "sainnhe/gruvbox-material",
     lazy = false,
     priority = 1000,
     config = function()
-      require("kanagawa").setup({
-        compile = false, -- enable compiling the colorscheme
-        undercurl = true, -- enable undercurls
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = true, -- do not set background color
-        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-        terminalColors = true, -- define vim.g.terminal_color_{0,17}
-        colors = { -- add/modify theme and palette colors
-          palette = {},
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        theme = "dragon", -- Load "wave" theme when 'background' option is not set
-        background = { -- map the value of 'background' option to a theme
-          dark = "dragon", -- try "dragon" !
-          light = "lotus",
-        },
-      })
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.g.gruvbox_material_enable_bold = 1
+      vim.g.gruvbox_material_better_performance = 1
+      -- vim.g.gruvbox_material_background = "soft"
+      vim.g.gruvbox_material_transparent_background = 2
     end,
   },
 
   {
     "LazyVim/LazyVim",
-    opts = { colorscheme = "kanagawa" },
+    opts = { colorscheme = "gruvbox-material" },
   },
 
   -- modicator (auto color line number based on vim mode)
   {
     "mawkler/modicator.nvim",
-    dependencies = "rebelot/kanagawa.nvim",
+    dependencies = "sainnhe/gruvbox-material",
     init = function()
       -- These are required for Modicator to work
       vim.o.cursorline = false

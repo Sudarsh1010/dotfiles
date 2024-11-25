@@ -35,7 +35,7 @@ keymap.del("n", "<C-Up>")
 keymap.del("n", "<C-Right>")
 
 keymap.set("n", "<C-h>", '<Cmd>lua require("tmux").move_left()<CR>', { silent = true })
-keymap.set("n", "<C-j>", '<Cmd>lua require("tmux").move_down()<CR>', { silent = true })
+keymap.set("n", "<C-j>", '<Cmd>lua require("tmux").move_bottom()<CR>', { silent = true })
 keymap.set("n", "<C-k>", '<Cmd>lua require("tmux").move_top()<CR>', { silent = true })
 keymap.set("n", "<C-l>", '<Cmd>lua require("tmux").move_right()<CR>', { silent = true })
 
