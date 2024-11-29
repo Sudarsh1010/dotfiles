@@ -28,11 +28,11 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 	window:set_config_overrides(overrides)
 end)
 
-config.font = wezterm.font("GeistMono Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 -- config.font = wezterm.font("Terminess Nerd Font", { weight = "DemiBold" })
 
 config.font_size = 14
-config.line_height = 1.2
+config.line_height = 1.4
 
 config.color_scheme = "Gruvbox Material (Gogh)"
 
@@ -46,6 +46,8 @@ config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 0,
 	right = 0,
+	top = 10,
+	bottom = 10,
 }
 
 return config
