@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  event = "ColorScheme",
   init = function()
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
@@ -20,9 +20,11 @@ return {
 
     return {
       options = {
-        theme = "gruvbox-material",
+        theme = "auto",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+        component_separators = { left = "|", right = "|" },
+        section_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = { "mode" },
@@ -39,8 +41,10 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
+
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { Util.lualine.pretty_path() },
+
           {
             require("package-info").get_status,
             color = Util.ui.fg("Statement"),

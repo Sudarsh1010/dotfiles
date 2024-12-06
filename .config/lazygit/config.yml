@@ -1,23 +1,23 @@
 gui:
   theme:
     activeBorderColor:
-      - "#fabd2f" # Gruvbox yellow
+      - "#9ccfd8"
       - bold
     inactiveBorderColor:
-      - "#928374" # Gruvbox gray
+      - "#6e6a86"
     optionsTextColor:
-      - "#83a598" # Gruvbox aqua
+      - "#9ccfd8"
     selectedLineBgColor:
-      - "#3c3836" # Gruvbox dark background
+      - "#26233a"
     cherryPickedCommitBgColor:
-      - "#504945" # Gruvbox medium dark
+      - "#403d52"
     cherryPickedCommitFgColor:
-      - "#fabd2f" # Gruvbox yellow
+      - "#9ccfd8"
     unstagedChangesColor:
-      - "#fb4934" # Gruvbox red
+      - "#eb6f92"
     defaultFgColor:
-      - "#ebdbb2" # Gruvbox light foreground
+      - "#e0def4"
     searchingActiveBorderColor:
-      - "#d3869b" # Gruvbox pink
+      - "#f6c177"
   authorColors:
-    "*": "#bdae93" # Gruvbox light gray
+    "*": "#c4a7e7"

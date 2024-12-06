@@ -28,7 +28,7 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 500,
+      timeout = 2000,
       render = "compact",
       max_height = function()
         return math.floor(vim.o.lines * 0.75)
@@ -48,12 +48,6 @@ return {
     priority = 1200,
     config = function()
       require("incline").setup({
-        highlight = {
-          groups = {
-            InclineNormal = { guibg = "#272727", guifg = "#ebdbb2" },
-            InclineNormalNC = { guibg = "none", guifg = "#ebdbb2" },
-          },
-        },
         window = { margin = { vertical = 0, horizontal = 1 } },
         hide = { cursorline = true },
         render = function(props)
@@ -72,12 +66,15 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    opts = {
-      options = {
-        mode = "tabs",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-      },
-    },
+    event = "ColorScheme",
+    config = function()
+      require("bufferline").setup({
+        options = {
+          mode = "tabs",
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+        },
+      })
+    end,
   },
 }

@@ -1,5 +1,3 @@
-# source ~/.config/fish/themes/kanagawa-dragon.fish
-# Disable greeting
 set -g fish_greeting
 
 # Directories
@@ -20,10 +18,11 @@ abbr .5 'cd ../../../../..'
 abbr mkdir 'mkdir -p'
 
 # Paths
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi
+set --export XDG_CONFIG_HOME \
+    "$HOME/.config"
 
 set --export PATH \
+    $HOME/.config \
     $HOME/.pyenv/shims \
     $HOME/.pyenv/bin \
     $HOME/.bun/bin \
@@ -41,6 +40,7 @@ set --export PATH \
 
 # Init in background
 function init_background --on-event fish_prompt
-    # starship init fish | source &
     pyenv init --path | source &
 end
+
+starship init fish | source
