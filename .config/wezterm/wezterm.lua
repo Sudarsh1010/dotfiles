@@ -35,8 +35,8 @@ config.font_size = 14
 config.line_height = 1.4
 config.warn_about_missing_glyphs = false
 
-config.color_scheme = "Gruvbox Dark (Gogh)"
-
+config.color_scheme = "Gruvbox Material (Gogh)"
+config.window_background_opacity = 0.95
 -- config.macos_window_background_blur = 8
 
 config.enable_tab_bar = false
