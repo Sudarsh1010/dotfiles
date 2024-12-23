@@ -24,14 +24,14 @@ return {
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
         component_separators = { left = "|", right = "|" },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+        lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
         lualine_b = { "branch" },
 
         lualine_c = {
-          Util.lualine.root_dir(),
+          LazyVim.lualine.root_dir(),
           {
             "diagnostics",
             symbols = {
@@ -42,43 +42,34 @@ return {
             },
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { Util.lualine.pretty_path() },
-          {
-            require("package-info").get_status,
-            color = Util.ui.fg("Statement"),
-          },
-          {
-            function()
-              return require("nvim-navic").get_location()
-            end,
-            cond = function()
-              return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-            end,
-          },
+          { LazyVim.lualine.pretty_path() },
         },
+
         lualine_x = {
+          Snacks.profiler.status(),
           -- stylua: ignore
           {
             function() return require("noice").api.status.command.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = Util.ui.fg("Statement"),
+            color = function() return { fg = Snacks.util.color("Statement") } end,
           },
           -- stylua: ignore
           {
             function() return require("noice").api.status.mode.get() end,
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = Util.ui.fg("Constant"),
+            color = function() return { fg = Snacks.util.color("Constant") } end,
           },
           -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
             cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = Util.ui.fg("Debug"),
+            color = function() return { fg = Snacks.util.color("Debug") } end,
           },
+          -- stylua: ignore
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = Util.ui.fg("Special"),
+            color = function() return { fg = Snacks.util.color("Special") } end,
           },
           {
             "diff",
@@ -99,11 +90,16 @@ return {
             end,
           },
         },
-        lualine_z = { {
-          'location',
-          separator = { right = '' },
-          left_padding = 2,
-        } },
+        lualine_y = {
+          { "progress", separator = " ", padding = { left = 1, right = 2 } },
+        },
+
+        lualine_z = {
+          {
+            "location",
+            separator = { right = "" },
+          },
+        },
       },
       extensions = { "neo-tree", "lazy" },
     }

@@ -14,8 +14,18 @@ opt.relativenumber = false
 opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 
+opt.pumblend = 0
+
+opt.expandtab = false
+opt.wrap = true
+
+vim.g.snacks_animate = false
 vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_python_ruff = "ruff"
+vim.g.ai_cmp = false
+
+-- for detecting the LSP root
+vim.g.root_lsp_ignore = { "copilot" }
 
 vim.g.root_spec = { "cwd" }
 vim.g.omni_sql_no_default_maps = 1

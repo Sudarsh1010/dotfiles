@@ -1,6 +1,7 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.telescope"
   ],
   "news": {
     "NEWS.md": "7429"

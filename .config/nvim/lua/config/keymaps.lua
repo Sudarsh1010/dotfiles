@@ -24,6 +24,8 @@ keymap.set("n", "sv", ":split<Return>", opts)
 
 -- Tabs
 keymap.set("n", "te", ":tabedit<Return>", opts)
+keymap.set("n", "L", ":tabnext<Return>", opts)
+keymap.set("n", "H", ":tabprev<Return>", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
