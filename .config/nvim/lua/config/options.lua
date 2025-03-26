@@ -17,7 +17,7 @@ opt.termguicolors = true
 opt.pumblend = 0
 
 opt.expandtab = false
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 opt.wrap = true
 
 vim.g.snacks_animate = false
