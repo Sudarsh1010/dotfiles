@@ -16,7 +16,7 @@ opt.termguicolors = true
 
 opt.pumblend = 0
 
-opt.expandtab = false
+opt.expandtab = true
 opt.shiftwidth = 2
 opt.wrap = true
 

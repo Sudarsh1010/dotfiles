@@ -17,14 +17,14 @@ return {
 
     return {
       options = {
-        theme = "gruvbox-material",
+        theme = "gruvbox",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
         component_separators = { left = "|", right = "|" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+        lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
         lualine_b = { "branch" },
 
         lualine_c = {
@@ -94,7 +94,7 @@ return {
         lualine_z = {
           {
             "location",
-            separator = { right = "" },
+            separator = { right = "" },
           },
         },
       },
