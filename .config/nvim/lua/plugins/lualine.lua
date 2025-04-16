@@ -38,7 +38,6 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { LazyVim.lualine.pretty_path() },
         },
 
@@ -87,14 +86,16 @@ return {
             end,
           },
         },
+
         lualine_y = {
-          { "progress", separator = " ", padding = { left = 1, right = 2 } },
+          { "progress", separator = " ", padding = { left = 1, right = 1 } },
         },
 
         lualine_z = {
           {
             "location",
-            separator = { right = "" },
+            separator = { right = "", left = "" },
+            padding = { left = 0, right = 0 },
           },
         },
       },

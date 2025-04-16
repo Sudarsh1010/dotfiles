@@ -41,7 +41,7 @@ return {
       end,
     },
   },
-  -- filename
+
   {
     "b0o/incline.nvim",
     event = "BufReadPre",
