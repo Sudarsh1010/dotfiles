@@ -22,7 +22,7 @@ white = "#A89984"
 yellow = "#D79921"
 
 [colors.primary]
-background = "#1D2021"
+background = "#000000"
 foreground = "#EBDBB2"
 
 [cursor]
@@ -30,13 +30,18 @@ style = "Underline"
 unfocused_hollow = false
 
 [font]
-size = 10
+size = 14
+
 [font.normal]
 family = "0xProto Nerd Font"
 style = "Regular"
 
 [general]
 live_config_reload = true
+
+[window.padding]
+x = 4
+y = 4
 
 [mouse]
 hide_when_typing = true
@@ -45,9 +50,7 @@ hide_when_typing = true
 save_to_clipboard = true
 
 [window]
+opacity = 0.9
 decorations = "none"
 dynamic_title = true
 
-[window.padding]
-x = 4
-y = 4

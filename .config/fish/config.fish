@@ -19,17 +19,11 @@ abbr .5 'cd ../../../../..'
 # Always mkdir a path
 abbr mkdir 'mkdir -p'
 
-# Paths
-set -Ux PYENV_ROOT $HOME/.pyenv
-set -xg PYTHONPATH $HOME/workspace/predigle/pluto/api-pluto-pmi
-
 set --export PATH \
-    $HOME/.pyenv/shims \
-    $HOME/.pyenv/bin \
     $HOME/.bun/bin \
     $HOME/go/bin \
     $HOME/.cargo/bin \
-    $HOME/.nvm/versions/node/v22.13.1/bin \
+    $HOME/.nvm/versions/node/v22.14.0/bin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     /usr/local/go/bin \
@@ -45,5 +39,8 @@ set --export XDG_CONFIG_HOME \
 # Init in background
 function init_background --on-event fish_prompt
     starship init fish | source &
-    pyenv init --path | source &
 end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

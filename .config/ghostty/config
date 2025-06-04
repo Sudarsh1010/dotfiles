@@ -1,15 +1,15 @@
-font-family = ZedMono Nerd Font
-font-size = 16
-adjust-cell-height = 15%
+font-family = 0xProto Nerd Font
+font-size = 14
 
-window-padding-x = 5
-window-padding-y = 6
+window-padding-x = 12
+window-padding-y = 12
 window-padding-balance = true
 macos-titlebar-style = hidden
 
-background-blur-radius = 16
-background-opacity = 0.85
+background-blur-radius = 8
+background-opacity = 0.95
 shell-integration = fish
+
 
 palette = 0=#141617
 palette = 1=#ea6962
