@@ -23,7 +23,7 @@ set --export PATH \
     $HOME/.bun/bin \
     $HOME/go/bin \
     $HOME/.cargo/bin \
-    $HOME/.nvm/versions/node/v22.14.0/bin \
+    $HOME/.nvm/versions/node/v22.16.0/bin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     /usr/local/go/bin \
