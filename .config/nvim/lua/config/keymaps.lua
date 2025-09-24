@@ -4,17 +4,17 @@
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-local util = require("lazyvim.util")
 local set_keymap = vim.api.nvim_set_keymap
+local util = require("lazyvim.util")
 local snacks = require("snacks")
 
 -- Borderless terminal
-vim.keymap.set("n", "<C-/>", function()
+keymap.set("n", "<C-/>", function()
   snacks.terminal(nil, { border = "none" })
 end, { desc = "Term with border" })
 
 -- Borderless lazygit
-vim.keymap.set("n", "<leader>gg", function()
+keymap.set("n", "<leader>gg", function()
   snacks.terminal({ "lazygit" }, { cwd = util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { desc = "Lazygit (root dir)" })
 

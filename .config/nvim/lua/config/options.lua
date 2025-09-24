@@ -28,6 +28,7 @@ vim.g.lazyvim_cmp = "blink.cmp"
 
 -- for detecting the LSP root
 vim.g.root_lsp_ignore = { "copilot" }
+vim.g.lazyvim_prettier_needs_config = true
 
 vim.g.root_spec = { "cwd" }
 vim.g.omni_sql_no_default_maps = 1
@@ -47,3 +48,5 @@ opt.listchars = { tab = "→ ", space = " ", nbsp = "⍽", eol = "⏎" } -- Whit
 -- Indent guides
 opt.listchars:append({ lead = "╎" })
 opt.list = true
+
+vim.g.lazyvim_blink_main = false

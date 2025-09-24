@@ -28,6 +28,7 @@ return {
           return LazyVim.cmp.expand(snippet)
         end,
       },
+
       appearance = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
         -- useful for when your theme doesn't support blink.cmp
@@ -37,6 +38,7 @@ return {
         -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
       },
+
       completion = {
         list = {
           selection = {

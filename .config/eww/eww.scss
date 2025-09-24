@@ -1,0 +1,55 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+  font-size: 14px;
+}
+
+// Global Styles
+.bar {
+}
+
+.centerbox {
+  margin: 6px 4px 6px;
+  padding: 10px 16px;
+  color: #232136;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0px 0px rgba(255, 255, 255, 0);
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+  all: unset;
+  color: #f6c177;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #ea9a97;
+  color: #232136;
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: #393552;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.label-ram {
+  font-size: large;
+}
+
+.workspaces button:hover {
+  color: #ea9a97;
+}

@@ -8,6 +8,7 @@ alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
+alias z='zoxide' # list folder as tree
 
 # Handy change dir shortcuts
 abbr .. 'cd ..'
@@ -33,8 +34,19 @@ set --export PATH \
     /bin \
     /sbin
 
+set --export JAVA_HOME /usr/lib/jvm/java-21-openjdk
+set --export ANDROID_HOME $HOME/Android/Sdk
+
+set -gx PATH $ANDROID_HOME/emulator $PATH
+set -gx PATH $ANDROID_HOME/tools $PATH
+set -gx PATH $ANDROID_HOME/tools/bin $PATH
+set -gx PATH $ANDROID_HOME/platform-tools $PATH
+
 set --export XDG_CONFIG_HOME \
     $HOME/.config
+
+set -x PATH $HOME/bin $PATH
+set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Init in background
 function init_background --on-event fish_prompt
@@ -44,3 +56,4 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+zoxide init fish | source
