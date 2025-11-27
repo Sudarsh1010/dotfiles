@@ -8,14 +8,14 @@ alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
-alias z='zoxide' # list folder as tree
+alias cd='zoxide' # list folder as tree
 
 # Handy change dir shortcuts
-abbr .. 'cd ..'
-abbr ... 'cd ../..'
-abbr .3 'cd ../../..'
-abbr .4 'cd ../../../..'
-abbr .5 'cd ../../../../..'
+abbr .. 'zoxide ..'
+abbr ... 'zoxide ../..'
+abbr .3 'zoxide ../../..'
+abbr .4 'zoxide ../../../..'
+abbr .5 'zoxide ../../../../..'
 
 # Always mkdir a path
 abbr mkdir 'mkdir -p'
@@ -24,7 +24,7 @@ set --export PATH \
     $HOME/.bun/bin \
     $HOME/go/bin \
     $HOME/.cargo/bin \
-    $HOME/.nvm/versions/node/v22.16.0/bin \
+    $HOME/.nvm/versions/node/v22.20.0/bin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     /usr/local/go/bin \
@@ -32,15 +32,19 @@ set --export PATH \
     /usr/bin \
     /usr/sbin \
     /bin \
-    /sbin
+    /sbin \
+    /opt/homebrew/opt/postgresql@18/bin:$PATH
 
-set --export JAVA_HOME /usr/lib/jvm/java-21-openjdk
-set --export ANDROID_HOME $HOME/Android/Sdk
+set --export JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+
+set --export ANDROID_HOME $HOME/Library/Android/sdk
 
 set -gx PATH $ANDROID_HOME/emulator $PATH
 set -gx PATH $ANDROID_HOME/tools $PATH
 set -gx PATH $ANDROID_HOME/tools/bin $PATH
 set -gx PATH $ANDROID_HOME/platform-tools $PATH
+
+set -gx CPPFLAGS -I/opt/homebrew/opt/openjdk/include
 
 set --export XDG_CONFIG_HOME \
     $HOME/.config
