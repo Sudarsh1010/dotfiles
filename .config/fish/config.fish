@@ -2,13 +2,14 @@
 # Disable greeting
 set -g fish_greeting
 
+fish_ssh_agent
+
 # Directories
 alias l='eza -lh  --icons=auto' # long list
 alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias lt='eza --icons=auto --tree' # list folder as tree
-alias cd='zoxide' # list folder as tree
 
 # Handy change dir shortcuts
 abbr .. 'zoxide ..'
@@ -24,7 +25,7 @@ set --export PATH \
     $HOME/.bun/bin \
     $HOME/go/bin \
     $HOME/.cargo/bin \
-    $HOME/.nvm/versions/node/v22.20.0/bin \
+    $HOME/.nvm/versions/node/v24.12.0/bin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     /usr/local/go/bin \
@@ -57,14 +58,19 @@ function init_background --on-event fish_prompt
     starship init fish | source &
 end
 
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+if status --is-interactive && type -q fastfetch
+    fastfetch
+end
+
+# # Added by OrbStack: command-line tools and integration
+# # This won't be added again if you remove it.
+# source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
 zoxide init fish | source
 
 # pnpm
-set -gx PNPM_HOME "/Users/sudarsh/Library/pnpm"
+set -gx PNPM_HOME /Users/sudarsh/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
