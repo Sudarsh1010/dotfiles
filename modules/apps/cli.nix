@@ -56,6 +56,7 @@
   # === Lazygit Configuration (Your exact theme structure, new colors) ===
   programs.lazygit = {
     enable = true;
+    enableFishIntegration = true;
     settings = {
       gui = {
         theme = {
@@ -70,7 +71,7 @@
           defaultFgColor = [config.colorScheme.palette.base06];
           searchingActiveBorderColor = [config.colorScheme.palette.base0B];
         };
-        
+
         authorColors = {
           "*" = config.colorScheme.palette.base03;  # was #928374 (gray)
         };

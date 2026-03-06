@@ -1,22 +1,22 @@
-{ lib, ... }: {
+{ ... }: {
   # Convert nix-colors palette to Ghostty palette format
   ghosttyPalette = palette: [
-    "0=${lib.removePrefix "#" palette.base00}"
-    "1=${lib.removePrefix "#" palette.base08}"
-    "2=${lib.removePrefix "#" palette.base0B}"
-    "3=${lib.removePrefix "#" palette.base0A}"
-    "4=${lib.removePrefix "#" palette.base0D}"
-    "5=${lib.removePrefix "#" palette.base0E}"
-    "6=${lib.removePrefix "#" palette.base0C}"
-    "7=${lib.removePrefix "#" palette.base07}"
-    "8=${lib.removePrefix "#" palette.base03}"
-    "9=${lib.removePrefix "#" palette.base08}"
-    "10=${lib.removePrefix "#" palette.base01}"
-    "11=${lib.removePrefix "#" palette.base0A}"
-    "12=${lib.removePrefix "#" palette.base0D}"
-    "13=${lib.removePrefix "#" palette.base0E}"
-    "14=${lib.removePrefix "#" palette.base0C}"
-    "15=${lib.removePrefix "#" palette.base07}"
+    "0=${palette.base00}"
+    "1=${palette.base08}"
+    "2=${palette.base0B}"
+    "3=${palette.base0A}"
+    "4=${palette.base0D}"
+    "5=${palette.base0E}"
+    "6=${palette.base0C}"
+    "7=${palette.base07}"
+    "8=${palette.base03}"
+    "9=${palette.base08}"
+    "10=${palette.base01}"
+    "11=${palette.base0A}"
+    "12=${palette.base0D}"
+    "13=${palette.base0E}"
+    "14=${palette.base0C}"
+    "15=${palette.base07}"
   ];
   
   # Convert nix-colors palette to Starship palette format

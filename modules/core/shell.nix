@@ -32,6 +32,7 @@
 
       # XDG base directory
       set -gx XDG_CONFIG_HOME "$HOME/.config"
+      set -gx PATH ~/.nix-profile/bin /nix/var/nix/profiles/default/bin $PATH
     '';
 
     # Interactive initialization (runs only in interactive shells)
@@ -94,18 +95,10 @@
           functions -e __oc_find_port
       end
 
-      # Background init: starship prompt
-      function init_background --on-event fish_prompt
-          starship init fish | source &
-      end
-
       # Fastfetch on interactive shells
       if status --is-interactive && type -q fastfetch
           fastfetch
       end
-
-      # Zoxide init (must be after abbreviations)
-      zoxide init fish | source
 
       # SSH agent helper (if you have fish_ssh_agent installed)
       if type -q fish_ssh_agent

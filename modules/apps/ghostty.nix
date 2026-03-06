@@ -1,12 +1,4 @@
-{ colorLib, pkgs, config, lib, ... }: {
-  # home.packages = with pkgs; [
-  #   # ✅ Use ghostty-bin for macOS, ghostty for Linux
-  # ] ++ lib.optionals pkgs.stdenv.isDarwin [
-  #   ghostty-bin  # Pre-built binary for macOS
-  # ] ++ lib.optionals pkgs.stdenv.isLinux [
-  #   ghostty      # Source build for Linux
-  # ];
-
+{ colorLib, pkgs, config, ... }: {
   # Enable Ghostty
   programs.ghostty = {
     enable = true;
@@ -15,24 +7,47 @@
     enableFishIntegration = true;
     settings = {
       font-family = "0xProto Nerd Font";
-      font-size = 14;
-      # Reference our custom theme by name
-      theme = config.colorScheme.name;
+      font-size = 15;
+      adjust-cell-height = 8;
+
+      window-padding-x = 8;
+      window-padding-y = 8;
+      window-padding-balance = true;
+
+      app-notifications = "no-clipboard-copy";
+      shell-integration = "fish";
+      mouse-hide-while-typing = true;
+      macos-titlebar-style = "hidden";
       macos-option-as-alt = true;
+
+      # Reference our custom theme by name
+      background-opacity = 0.95;
+      theme = config.colorScheme.name;
+    };
+
+    themes."${config.colorScheme.name}" = {
+      background = config.colorScheme.palette.base00;
+      cursor-color = config.colorScheme.palette.base05;
+      foreground = config.colorScheme.palette.base05;
+      palette = (colorLib.ghosttyPalette config.colorScheme.palette);
+      selection-background = config.colorScheme.palette.base04;
+      selection-foreground = config.colorScheme.palette.base00;
     };
   };
-
-  xdg.configFile."ghostty/themes/${config.colorScheme.name}".text = ''
-    # Theme: ${config.colorScheme.name} by ${config.colorScheme.author}
-
-    # Base colors (hex without # prefix)
-    background = ${lib.removePrefix "#" config.colorScheme.palette.base00}
-    foreground = ${lib.removePrefix "#" config.colorScheme.palette.base05}
-    cursor-color = ${lib.removePrefix "#" config.colorScheme.palette.base05}
-    selection-background = ${lib.removePrefix "#" config.colorScheme.palette.base04}
-    selection-foreground = ${lib.removePrefix "#" config.colorScheme.palette.base00}
-
-    # ANSI palette (0-15) - semicolon-separated list
-    palette = ${lib.concatStringsSep ";" (colorLib.ghosttyPalette config.colorScheme.palette)}
-  '';
+  #
+  # xdg.configFile."ghostty/themes/${config.colorScheme.name}".text = ''
+  #   # Theme: ${config.colorScheme.name} by ${config.colorScheme.author}
+  #
+  #   # Base colors (hex without # prefix)
+  #   background = ${config.colorScheme.palette.base00}
+  #   foreground = ${config.colorScheme.palette.base05}
+  #   cursor-color = ${config.colorScheme.palette.base05}
+  #   selection-background = ${config.colorScheme.palette.base04}
+  #   selection-foreground = ${config.colorScheme.palette.base00}
+  #
+  #   # ANSI palette (0-15) - ONE LINE PER COLOR
+  #   ${lib.concatStringsSep "\n" (
+  #     map (c: "palette = ${c}") (colorLib.ghosttyPalette config.colorScheme.palette)
+  #   )}
+  # '';
 }
