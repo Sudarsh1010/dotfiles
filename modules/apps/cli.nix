@@ -75,11 +75,6 @@
           "*" = config.colorScheme.palette.base03;  # was #928374 (gray)
         };
       };
-
-      git.paging = {
-        colorArg = "always";
-        pager = "delta --dark --paging=never";
-      };
     };
   };
 }
