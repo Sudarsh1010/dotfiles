@@ -1,13 +1,16 @@
-{ colorLib, pkgs, config, lib, username, ... }: {
+{ colorLib, pkgs, extraDir, config, lib, username, ... }: {
   # === Fish Shell ===
   programs.fish = {
     enable = true;
 
     # Plugins
-    plugins = [ ];
+    plugins = [
+      { name = "nvm"; src = pkgs.fishPlugins.nvm.src; }
+    ];
 
     # Aliases (simple command replacements)
     shellAliases = {
+      tmux = "tmux -u";
       ll = "eza -lha --icons=auto --sort=name --group-directories-first";
       l = "eza -lh --icons=auto";
       ls = "eza -1 --icons=auto";
@@ -31,7 +34,6 @@
       set -g fish_greeting
 
       # XDG base directory
-      set -gx XDG_CONFIG_HOME "$HOME/.config"
       set -gx PATH ~/.nix-profile/bin /nix/var/nix/profiles/default/bin $PATH
     '';
 
@@ -39,25 +41,6 @@
     interactiveShellInit = ''
       # Editor
       set -x EDITOR "nvim"
-
-      # Java
-      set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
-
-      # Android SDK
-      set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
-      set -gx PATH "$ANDROID_HOME/emulator" "$ANDROID_HOME/tools" "$ANDROID_HOME/tools/bin" "$ANDROID_HOME/platform-tools" $PATH
-
-      # PostgreSQL (Homebrew)
-      set -gx CPPFLAGS "-I/opt/homebrew/opt/openjdk/include"
-
-      # Docker (OrbStack/XDG)
-      set -x DOCKER_HOST "unix://$XDG_RUNTIME_DIR/docker.sock"
-
-      # PNPM
-      set -gx PNPM_HOME "/Users/${username}/Library/pnpm"
-      if not string match -q -- $PNPM_HOME $PATH
-        set -gx PATH "$PNPM_HOME" $PATH
-      end
 
       # Custom oc function for opencode + tmux integration
       function oc
@@ -138,6 +121,11 @@
     fastfetch
   ];
 
+  home.file.".config/fastfetch" = {
+    source = "${extraDir}/fastfetch";
+    recursive = true;
+  };
+
   # === PATH Management ===
   # Home Manager manages PATH via sessionPath.
   # We add custom paths here instead of hardcoding in fish.
@@ -147,7 +135,7 @@
     "$HOME/go/bin"
     "$HOME/.cargo/bin"
     # NVM path is version-specific; better to init nvm in shellInit if needed
-    # "$HOME/.nvm/versions/node/v24.12.0/bin"
+    "$HOME/.local/share/nvm/v24.14.0/bin"
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
     "/usr/local/go/bin"

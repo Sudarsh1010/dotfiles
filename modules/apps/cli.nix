@@ -67,13 +67,13 @@
           selectedLineBgColor = [config.colorScheme.palette.base01];
           cherryPickedCommitBgColor = [config.colorScheme.palette.base00];
           cherryPickedCommitFgColor = [config.colorScheme.palette.base0E];
-          unstagedChangesColor = [config.colorScheme.palette.base0A];
-          defaultFgColor = [config.colorScheme.palette.base06];
+          unstagedChangesColor = [config.colorScheme.palette.base02];
+          defaultFgColor = [config.colorScheme.palette.base03];
           searchingActiveBorderColor = [config.colorScheme.palette.base0B];
         };
 
         authorColors = {
-          "*" = config.colorScheme.palette.base03;  # was #928374 (gray)
+          "*" = config.colorScheme.palette.base03;
         };
       };
     };

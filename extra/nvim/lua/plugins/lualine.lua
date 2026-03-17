@@ -17,7 +17,7 @@ return {
 
     return {
       options = {
-        theme = "gruvbox",
+        theme = "kanagawa-dragon",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
         component_separators = { left = "|", right = "|" },

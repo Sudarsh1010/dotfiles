@@ -11,21 +11,22 @@
     nix-colors.url = "github:Misterio77/nix-colors";
     nur.url = "github:nix-community/NUR";
     mac-app-util.url = "github:hraban/mac-app-util";
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { nixpkgs, nur, home-manager, nix-colors, mac-app-util, ... }: {
+  outputs = { nixpkgs, nur, home-manager, nix-colors, mac-app-util, ... } @ inputs: {
     # This defines your macOS Home Manager configuration
     homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "aarch64-darwin";
         overlays = [ nur.overlays.default ];  # Add NUR overlay
-        config.allowUnfree = true;
+          config.allowUnfree = true;
       };
       modules = [
         mac-app-util.homeManagerModules.default
         nix-colors.homeManagerModules.default
         ./hosts/mac/home.nix
-        # You can add more modules here later
       ];
       extraSpecialArgs = {
         username = "sudarsh";
@@ -35,13 +36,43 @@
       };
     };
 
-    # Later, you will add this for your homelab:
-    # nixosConfigurations."homelab-server" = ...
+    nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
+      system = nixpkgs.legacyPackages.x86_64-linux;
+      specialArgs = {
+        inherit inputs;
+        inherit nix-colors;
+      };
+      modules = [
+        ./hosts/desktop/configuration.nix
+        home-manager.nixosModules.home-manager
+        nur.modules.nixos.default
+
+        {
+          nixpkgs.overlays = [ nur.overlays.default ];
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+            username = "sudarsh";
+            modulesDir = ./modules;
+            colorLib = import ./lib/colors.nix { lib = nixpkgs.lib; };
+            extraDir = ./extra;
+          }; 
+
+          home-manager.users.sudarsh = import ./hosts/desktop/home.nix;
+        }
+      ];
+    };
+
+# Later, you will add this for your homelab:
+# nixosConfigurations."homelab-server" = ...
     nixosConfigurations."homelab" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hosts/homelab/configuration.nix
-        # You can import your common modules here too!
+# You can import your common modules here too!
       ];
     };
   };

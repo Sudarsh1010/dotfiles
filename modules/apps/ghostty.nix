@@ -6,8 +6,8 @@
 
     enableFishIntegration = true;
     settings = {
-      font-family = "0xProto Nerd Font";
-      font-size = 15;
+      font-family = "Iosevka Nerd Font Proto";
+      font-size = 12;
       adjust-cell-height = 8;
 
       window-padding-x = 8;
@@ -21,7 +21,7 @@
       macos-option-as-alt = true;
 
       # Reference our custom theme by name
-      background-opacity = 0.95;
+      background-opacity = 1;
       theme = config.colorScheme.name;
     };
 
@@ -34,20 +34,4 @@
       selection-foreground = config.colorScheme.palette.base00;
     };
   };
-  #
-  # xdg.configFile."ghostty/themes/${config.colorScheme.name}".text = ''
-  #   # Theme: ${config.colorScheme.name} by ${config.colorScheme.author}
-  #
-  #   # Base colors (hex without # prefix)
-  #   background = ${config.colorScheme.palette.base00}
-  #   foreground = ${config.colorScheme.palette.base05}
-  #   cursor-color = ${config.colorScheme.palette.base05}
-  #   selection-background = ${config.colorScheme.palette.base04}
-  #   selection-foreground = ${config.colorScheme.palette.base00}
-  #
-  #   # ANSI palette (0-15) - ONE LINE PER COLOR
-  #   ${lib.concatStringsSep "\n" (
-  #     map (c: "palette = ${c}") (colorLib.ghosttyPalette config.colorScheme.palette)
-  #   )}
-  # '';
 }

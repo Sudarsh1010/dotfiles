@@ -1,27 +1,33 @@
 { lib, ... }: {
   # Define custom color scheme using nix-colors format
   colorScheme = lib.mkForce {
-    name = "solitude";
-    author = "HANCORE-linux";
+    name = "kanagawa-dragon";
     variant = "dark";
     palette = {
-      # Base colors (following base16 convention)
-      base00 = "#101315";  # Background
-      base01 = "#343d41";  # Lighter Background
-      base02 = "#565d60";  # Comments
-      base03 = "#62676a";  # Selection
-      base04 = "#798186";  # Accent / Primary
-      base05 = "#cacccc";  # Foreground
-      base06 = "#cbc2be";  # Bright UI
-      base07 = "#c5c4c3";  # Brightest
-      base08 = "#de6145";  # Red
-      base09 = "#d9dbdc";  # Orange
-      base0A = "#c9c2b4";  # Yellow
-      base0B = "#9fa5a9";  # Green
-      base0C = "#707070";  # Cyan
-      base0D = "#5d6367";  # Blue
-      base0E = "#aeaeae";  # Magenta
-      base0F = "#9a9a9a";  # Brown
+      base00 = "#181616";
+      base01 = "#1d1c19";
+      base02 = "#282727";
+      base03 = "#393836";
+      base04 = "#9e9b93";
+      base05 = "#a6a69c";
+      base06 = "#c0c3c0";
+      base07 = "#c5c9c5";
+      base08 = "#c4746e";
+      base09 = "#b6927b";
+      base0A = "#c4b28a";
+      base0B = "#87a987";
+      base0C = "#8ea4a2";
+      base0D = "#8ba4b0";
+      base0E = "#a292a3";
+      base0F = "#c4746e";
+      base10 = "#12120f";
+      base11 = "#0d0c0c";
+      base12 = "#c4746e";
+      base13 = "#b98d7b";
+      base14 = "#8a9a7b";
+      base15 = "#8ea4a2";
+      base16 = "#8ba4b0";
+      base17 = "#a292a3";
     };
   };
 }
