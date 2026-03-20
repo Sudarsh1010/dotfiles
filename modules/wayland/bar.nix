@@ -4,7 +4,7 @@
     package = pkgs.waybar;
   };
 
-  home.file.".config/waybar" = {
+  xdg.configFile."waybar" = {
     source = "${extraDir}/waybar";
     recursive = true;
     force = true;

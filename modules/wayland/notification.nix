@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   services.swaync = {
     enable = true;
     package = pkgs.swaynotificationcenter;
-    style = ''
+    style = with config.colorScheme.palette; ''
       * {
         all: unset;
         font-size: 14px;
@@ -11,10 +11,10 @@
       }
 
       .floating-notifications.background .notification-row .notification-background {
-        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #1d2021;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #${base01};
         margin: 18px;
-        background-color: #282828;
-        color: #ebdbb2;
+        background-color: #${base02};
+        color: #${base05};
         padding: 0;
       }
 
@@ -23,7 +23,7 @@
       }
 
       .floating-notifications.background .notification-row .notification-background .notification.critical {
-        box-shadow: inset 0 0 7px 0 #cc241d;
+        box-shadow: inset 0 0 7px 0 #${base08};
       }
 
       .floating-notifications.background .notification-row .notification-background .notification .notification-content {
@@ -31,15 +31,15 @@
       }
 
       .floating-notifications.background .notification-row .notification-background .notification .notification-content .summary {
-        color: #ebdbb2;
+        color: #${base05};
       }
 
       .floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
-        color: #83a589;
+        color: #${base0B};
       }
 
       .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
-        color: #ebdbb2;
+        color: #${base05};
       }
 
       .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
@@ -47,77 +47,77 @@
       }
 
       .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-        color: #ebdbb2;
-        background-color: #1d2021;
-        box-shadow: inset 0 0 0 1px #32302f;
+        color: #${base05};
+        background-color: #${base01};
+        box-shadow: inset 0 0 0 1px #${base03};
         margin: 7px;
       }
 
       .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #1d2021;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base01};
+        color: #${base05};
       }
 
       .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #83a598;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0D};
+        color: #${base05};
       }
 
       .floating-notifications.background .notification-row .notification-background .close-button {
         margin: 7px;
         padding: 2px;
-        color: #282828;
-        background-color: #cc241d;
+        color: #${base02};
+        background-color: #${base08};
       }
 
       .floating-notifications.background .notification-row .notification-background .close-button:hover {
-        background-color: #ebdbb2;
-        color: #282828;
+        background-color: #${base05};
+        color: #${base02};
       }
 
       .floating-notifications.background .notification-row .notification-background .close-button:active {
-        background-color: #cc241d;
-        color: #282828;
+        background-color: #${base08};
+        color: #${base02};
       }
 
       .control-center {
-        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #1d2021;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #${base01};
         margin: 18px;
-        background-color: #282828;
-        color: #ebdbb2;
+        background-color: #${base02};
+        color: #${base05};
         padding: 14px;
       }
 
       .control-center .widget-title {
-        color: #ebdbb2;
+        color: #${base05};
         font-size: 1.3em;
       }
 
       .control-center .widget-title button {
-        color: #ebdbb2;
-        background-color: #1d2021;
-        box-shadow: inset 0 0 0 1px #32302f;
+        color: #${base05};
+        background-color: #${base01};
+        box-shadow: inset 0 0 0 1px #${base03};
         padding: 8px;
       }
 
       .control-center .widget-title button:hover {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #98971a;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0B};
+        color: #${base05};
       }
 
       .control-center .widget-title button:active {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #83a598;
-        color: #282828;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0D};
+        color: #${base02};
       }
 
       .control-center .notification-row .notification-background {
-        color: #ebdbb2;
-        background-color: #1d2021;
-        box-shadow: inset 0 0 0 1px #32302f;
+        color: #${base05};
+        background-color: #${base01};
+        box-shadow: inset 0 0 0 1px #${base03};
         margin-top: 14px;
       }
 
@@ -126,7 +126,7 @@
       }
 
       .control-center .notification-row .notification-background .notification.critical {
-        box-shadow: inset 0 0 7px 0 #cc241d;
+        box-shadow: inset 0 0 7px 0 #${base08};
       }
 
       .control-center .notification-row .notification-background .notification .notification-content {
@@ -134,15 +134,15 @@
       }
 
       .control-center .notification-row .notification-background .notification .notification-content .summary {
-        color: #ebdbb2;
+        color: #${base05};
       }
 
       .control-center .notification-row .notification-background .notification .notification-content .time {
-        color: #83a589;
+        color: #${base0B};
       }
 
       .control-center .notification-row .notification-background .notification .notification-content .body {
-        color: #ebdbb2;
+        color: #${base05};
       }
 
       .control-center .notification-row .notification-background .notification > *:last-child > * {
@@ -150,89 +150,89 @@
       }
 
       .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-        color: #ebdbb2;
-        background-color: #11111b;
-        box-shadow: inset 0 0 0 1px #32302f;
+        color: #${base05};
+        background-color: #${base00};
+        box-shadow: inset 0 0 0 1px #${base03};
         margin: 7px;
       }
 
       .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #1d2021;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base01};
+        color: #${base05};
       }
 
       .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #83a598;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0D};
+        color: #${base05};
       }
 
       .control-center .notification-row .notification-background .close-button {
         margin: 7px;
         padding: 2px;
-        color: #282828;
-        background-color: #ebdbb2;
+        color: #${base02};
+        background-color: #${base05};
       }
 
       .control-center .notification-row .notification-background .close-button:hover {
-        background-color: #cc241d;
-        color: #282828;
+        background-color: #${base08};
+        color: #${base02};
       }
 
       .control-center .notification-row .notification-background .close-button:active {
-        background-color: #cc241d;
-        color: #282828;
+        background-color: #${base08};
+        color: #${base02};
       }
 
       .control-center .notification-row .notification-background:hover {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #458588;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0D};
+        color: #${base05};
       }
 
       .control-center .notification-row .notification-background:active {
-        box-shadow: inset 0 0 0 1px #32302f;
-        background-color: #83a598;
-        color: #ebdbb2;
+        box-shadow: inset 0 0 0 1px #${base03};
+        background-color: #${base0D};
+        color: #${base05};
       }
 
 
 
       progressbar {
-        box-shadow: inset 0 0 0 1px #32302f;
+        box-shadow: inset 0 0 0 1px #${base03};
       }
 
       .notification.critical progress {
-        background-color: #cc241d;
+        background-color: #${base08};
       }
 
       .notification.low progress,
       .notification.normal progress {
-        background-color: #458588;
+        background-color: #${base0D};
       }
 
       trough {
-        background-color: #1d2021;
+        background-color: #${base01};
       }
 
       .control-center trough {
-        background-color: #32302f;
+        background-color: #${base03};
       }
 
       .control-center-dnd {
         margin-top: 5px;
-        background: #1d2021;
-        border: 1px solid #32302f;
+        background: #${base01};
+        border: 1px solid #${base03};
         box-shadow: none;
       }
 
       .control-center-dnd:checked {
-        background: #1d2021;
+        background: #${base01};
       }
 
       .control-center-dnd slider {
-        background: #32302f;
+        background: #${base03};
       }
 
       .widget-dnd {
@@ -242,18 +242,18 @@
 
       .widget-dnd > switch {
         font-size: initial;
-        background: #1d2021;
-        border: 1px solid #32302f;
+        background: #${base01};
+        border: 1px solid #${base03};
         box-shadow: none;
       }
 
       .widget-dnd > switch:checked {
-        background: #1d2021;
+        background: #${base01};
       }
 
       .widget-dnd > switch slider {
-        background: #32302f;
-        border: 1px solid #d65d0e;
+        background: #${base03};
+        border: 1px solid #${base09};
       }
     '';
   };

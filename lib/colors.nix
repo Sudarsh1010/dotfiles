@@ -1,4 +1,4 @@
-{ ... }: {
+{
   # Convert nix-colors palette to Ghostty palette format
   ghosttyPalette = palette: [
     "0=${palette.base00}"

@@ -1,6 +1,6 @@
 { inputs, config, pkgs, modulesDir, username, ... }: {
   imports =
-    [ 
+    [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
@@ -20,6 +20,14 @@
   };
 
   networking.hostName = "nixos"; # Define your hostname.
+  environment.etc."resolv.conf".text = ''
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+  '';
+  # networking.nameservers = [
+  #   "1.1.1.1"
+  #   "1.0.0.1"
+  # ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -87,7 +95,7 @@
 
   programs.fish.enable = true;
 
-  fonts.packages = with pkgs; [ 
+  fonts.packages = with pkgs; [
     noto-fonts
     adwaita-fonts
     nerd-fonts.iosevka
@@ -100,7 +108,9 @@
     isNormalUser = true;
     description = "sudarsh";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      pavucontrol
+    ];
     shell = pkgs.fish;
   };
 
@@ -111,6 +121,7 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # Add libraries as needed; start minimal and add as errors appear
+    glibc
     gtk3
     libGL
     libxkbcommon

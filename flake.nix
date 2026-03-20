@@ -15,7 +15,15 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { nixpkgs, nur, home-manager, nix-colors, mac-app-util, ... } @ inputs: {
+  outputs = { nixpkgs, nur, home-manager, nix-colors, mac-app-util, ... } @ inputs:
+  let
+    hmExtraSpecialArgs = {
+      username = "sudarsh";
+      extraDir = ./extra;
+      colorLib = import ./lib/colors.nix;
+    };
+  in
+  {
     # This defines your macOS Home Manager configuration
     homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
@@ -28,12 +36,7 @@
         nix-colors.homeManagerModules.default
         ./hosts/mac/home.nix
       ];
-      extraSpecialArgs = {
-        username = "sudarsh";
-        extraDir = ./extra;
-        modulesDir = ./modules;
-        colorLib = import ./lib/colors.nix { lib = nixpkgs.lib; };
-      };
+      extraSpecialArgs = hmExtraSpecialArgs;
     };
 
     nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
@@ -42,27 +45,25 @@
         inherit inputs;
         inherit nix-colors;
       };
+
       modules = [
         ./hosts/desktop/configuration.nix
         home-manager.nixosModules.home-manager
         nur.modules.nixos.default
 
-        {
+        ({ config, pkgs, ... }: {
           nixpkgs.overlays = [ nur.overlays.default ];
+
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = {
+          home-manager.extraSpecialArgs = hmExtraSpecialArgs // {
             inherit inputs;
             inherit nix-colors;
-            username = "sudarsh";
-            modulesDir = ./modules;
-            colorLib = import ./lib/colors.nix { lib = nixpkgs.lib; };
-            extraDir = ./extra;
-          }; 
+          };
 
           home-manager.users.sudarsh = import ./hosts/desktop/home.nix;
-        }
+        })
       ];
     };
 

@@ -121,7 +121,7 @@
     fastfetch
   ];
 
-  home.file.".config/fastfetch" = {
+  xdg.configFile."fastfetch" = {
     source = "${extraDir}/fastfetch";
     recursive = true;
   };

@@ -1,23 +1,20 @@
-{ pkgs, extraDir, config, ... }: {
+{ pkgs, extraDir, ... }: {
   home.packages = with pkgs; [
     rofi
     grim
     slurp
   ];
 
-  home.file.".config/hypr" = {
+  xdg.configFile."hypr" = {
     source = "${extraDir}/hypr";
     recursive = true;
     force = true;
   };
 
-  home.file.".config/rofi" = {
+  xdg.configFile."rofi" = {
     source = "${extraDir}/rofi";
     recursive = true;
   };
-
-  programs.kitty.enable = true;
-  programs.waybar.enable = true;
 
   imports = [
     ../wayland/default.nix
