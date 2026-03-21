@@ -1,4 +1,5 @@
-{ pkgs, extraDir, ... }: {
+{ pkgs, extraDir, ... }:
+{
   home.packages = with pkgs; [
     rofi
     grim

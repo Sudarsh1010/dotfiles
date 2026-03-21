@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.packages = with pkgs; [
     opencode
   ];
@@ -61,22 +62,28 @@
       gui = {
         theme = {
           # Active/selected elements - use orange (base09) for warmth
-          activeBorderColor = [config.colorScheme.palette.base09 "bold"];
+          activeBorderColor = [
+            config.colorScheme.palette.base09
+            "bold"
+          ];
           # Inactive borders - subtle comment color
-          inactiveBorderColor = [config.colorScheme.palette.base03];
+          inactiveBorderColor = [ config.colorScheme.palette.base03 ];
           # Search highlight - bright green for visibility
-          searchingActiveBorderColor = [config.colorScheme.palette.base0B "bold"];
+          searchingActiveBorderColor = [
+            config.colorScheme.palette.base0B
+            "bold"
+          ];
           # Options text - blue for clarity
-          optionsTextColor = [config.colorScheme.palette.base0D];
+          optionsTextColor = [ config.colorScheme.palette.base0D ];
           # Selected line background - slightly lighter bg
-          selectedLineBgColor = [config.colorScheme.palette.base02];
+          selectedLineBgColor = [ config.colorScheme.palette.base02 ];
           # Cherry-picked commits
-          cherryPickedCommitBgColor = [config.colorScheme.palette.base01];
-          cherryPickedCommitFgColor = [config.colorScheme.palette.base0E];
+          cherryPickedCommitBgColor = [ config.colorScheme.palette.base01 ];
+          cherryPickedCommitFgColor = [ config.colorScheme.palette.base0E ];
           # Unstaged changes - red/orange for attention
-          unstagedChangesColor = [config.colorScheme.palette.base08];
+          unstagedChangesColor = [ config.colorScheme.palette.base08 ];
           # Default text - proper foreground color
-          defaultFgColor = [config.colorScheme.palette.base05];
+          defaultFgColor = [ config.colorScheme.palette.base05 ];
         };
 
         authorColors = {

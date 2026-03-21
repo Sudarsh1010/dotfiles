@@ -15,66 +15,77 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { nixpkgs, nur, home-manager, nix-colors, mac-app-util, ... } @ inputs:
-  let
-    hmExtraSpecialArgs = {
-      username = "sudarsh";
-      extraDir = ./extra;
-      colorLib = import ./lib/colors.nix;
-    };
-  in
-  {
-    # This defines your macOS Home Manager configuration
-    homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = "aarch64-darwin";
-        overlays = [ nur.overlays.default ];  # Add NUR overlay
+  outputs =
+    {
+      nixpkgs,
+      nur,
+      home-manager,
+      nix-colors,
+      mac-app-util,
+      ...
+    }@inputs:
+    let
+      hmExtraSpecialArgs = {
+        username = "sudarsh";
+        extraDir = ./extra;
+        colorLib = import ./lib/colors.nix;
+      };
+    in
+    {
+      # This defines your macOS Home Manager configuration
+      homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [ nur.overlays.default ]; # Add NUR overlay
           config.allowUnfree = true;
-      };
-      modules = [
-        mac-app-util.homeManagerModules.default
-        nix-colors.homeManagerModules.default
-        ./hosts/mac/home.nix
-      ];
-      extraSpecialArgs = hmExtraSpecialArgs;
-    };
-
-    nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
-      system = nixpkgs.legacyPackages.x86_64-linux;
-      specialArgs = {
-        inherit inputs;
-        inherit nix-colors;
+        };
+        modules = [
+          mac-app-util.homeManagerModules.default
+          nix-colors.homeManagerModules.default
+          ./hosts/mac/home.nix
+        ];
+        extraSpecialArgs = hmExtraSpecialArgs;
       };
 
-      modules = [
-        ./hosts/desktop/configuration.nix
-        home-manager.nixosModules.home-manager
-        nur.modules.nixos.default
+      nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
+        system = nixpkgs.legacyPackages.x86_64-linux;
+        specialArgs = {
+          inherit inputs;
+          inherit nix-colors;
+        };
 
-        ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [ nur.overlays.default ];
+        modules = [
+          ./hosts/desktop/configuration.nix
+          home-manager.nixosModules.home-manager
+          nur.modules.nixos.default
 
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          (
+            { config, pkgs, ... }:
+            {
+              nixpkgs.overlays = [ nur.overlays.default ];
 
-          home-manager.extraSpecialArgs = hmExtraSpecialArgs // {
-            inherit inputs;
-            inherit nix-colors;
-          };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-          home-manager.users.sudarsh = import ./hosts/desktop/home.nix;
-        })
-      ];
+              home-manager.extraSpecialArgs = hmExtraSpecialArgs // {
+                inherit inputs;
+                inherit nix-colors;
+              };
+
+              home-manager.users.sudarsh = import ./hosts/desktop/home.nix;
+            }
+          )
+        ];
+      };
+
+      # Later, you will add this for your homelab:
+      # nixosConfigurations."homelab-server" = ...
+      nixosConfigurations."homelab" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/homelab/configuration.nix
+          # You can import your common modules here too!
+        ];
+      };
     };
-
-# Later, you will add this for your homelab:
-# nixosConfigurations."homelab-server" = ...
-    nixosConfigurations."homelab" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/homelab/configuration.nix
-# You can import your common modules here too!
-      ];
-    };
-  };
 }

@@ -1,4 +1,5 @@
-{ pkgs, extraDir, ... }: {
+{ pkgs, extraDir, ... }:
+{
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;

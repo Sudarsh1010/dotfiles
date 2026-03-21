@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./rust.nix
     ./go.nix
@@ -7,6 +8,10 @@
   ];
 
   home.packages = with pkgs; [
+    nil
+    nixd
+    nixfmt
+    nixfmt-tree
     bun
     gcc
     gdb

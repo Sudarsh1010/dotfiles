@@ -1,9 +1,16 @@
-{ inputs, config, pkgs, modulesDir, username, ... }: {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{
+  inputs,
+  config,
+  pkgs,
+  modulesDir,
+  username,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -21,8 +28,8 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   environment.etc."resolv.conf".text = ''
-nameserver 1.1.1.1
-nameserver 1.0.0.1
+    nameserver 1.1.1.1
+    nameserver 1.0.0.1
   '';
   # networking.nameservers = [
   #   "1.1.1.1"
@@ -75,7 +82,7 @@ nameserver 1.0.0.1
   };
 
   # NVIDIA
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -90,7 +97,8 @@ nameserver 1.0.0.1
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   programs.fish.enable = true;
@@ -107,7 +115,10 @@ nameserver 1.0.0.1
   users.users.sudarsh = {
     isNormalUser = true;
     description = "sudarsh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       pavucontrol
     ];
@@ -136,10 +147,10 @@ nameserver 1.0.0.1
     nautilus
     thunar
     brave
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  #   neovim
-  #   git
+    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #   wget
+    #   neovim
+    #   git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,5 +189,8 @@ nameserver 1.0.0.1
 
   # Nix settings
   nix.settings.auto-optimise-store = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

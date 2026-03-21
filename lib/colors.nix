@@ -18,7 +18,7 @@
     "14=${palette.base0C}"
     "15=${palette.base07}"
   ];
-  
+
   # Convert nix-colors palette to Starship palette format
   starshipPalette = palette: {
     bg = palette.base00;

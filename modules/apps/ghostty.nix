@@ -1,4 +1,10 @@
-{ colorLib, pkgs, config, ... }: {
+{
+  colorLib,
+  pkgs,
+  config,
+  ...
+}:
+{
   # Enable Ghostty
   programs.ghostty = {
     enable = true;

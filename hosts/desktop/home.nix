@@ -1,4 +1,5 @@
-{ pkgs, nix-colors, ... }: {
+{ pkgs, nix-colors, ... }:
+{
   home.stateVersion = "25.11";
 
   home.pointerCursor = {

@@ -1,11 +1,23 @@
-{ colorLib, pkgs, extraDir, config, lib, username, ... }: {
+{
+  colorLib,
+  pkgs,
+  extraDir,
+  config,
+  lib,
+  username,
+  ...
+}:
+{
   # === Fish Shell ===
   programs.fish = {
     enable = true;
 
     # Plugins
     plugins = [
-      { name = "nvm"; src = pkgs.fishPlugins.nvm.src; }
+      {
+        name = "nvm";
+        src = pkgs.fishPlugins.nvm.src;
+      }
     ];
 
     # Aliases (simple command replacements)

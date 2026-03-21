@@ -1,11 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Install Go
   home.packages = with pkgs; [
     go
-    gopls              # Go LSP
-    go-tools           # Extra Go tools
-    delve              # Debugger
-    golangci-lint      # Linter aggregator
+    gopls # Go LSP
+    go-tools # Extra Go tools
+    delve # Debugger
+    golangci-lint # Linter aggregator
   ];
 
   # Set Go environment variables

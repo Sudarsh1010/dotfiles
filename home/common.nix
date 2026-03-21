@@ -1,4 +1,5 @@
-{ username, pkgs, ... }: {
+{ username, pkgs, ... }:
+{
   imports = [
     ../modules/theme.nix
     ../modules/core/shell.nix
@@ -8,7 +9,10 @@
     ../modules/apps/default.nix
   ];
 
-  home.packages = with pkgs; [ stremio-linux-shell zed-editor ];
+  home.packages = with pkgs; [
+    stremio-linux-shell
+    zed-editor
+  ];
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
   programs.home-manager.enable = true;

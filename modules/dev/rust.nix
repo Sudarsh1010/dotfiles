@@ -1,11 +1,17 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   home.packages = with pkgs; [
     # Rust toolchain via rustup (recommended for managing toolchains)
     rustup
-    cargo-audit        # Security auditing
-    cargo-edit         # Cargo subcommands for managing dependencies
-    cargo-watch        # Automatically rebuild on file changes
-    cargo-nextest      # Modern test runner
+    cargo-audit # Security auditing
+    cargo-edit # Cargo subcommands for managing dependencies
+    cargo-watch # Automatically rebuild on file changes
+    cargo-nextest # Modern test runner
   ];
 
   # Set environment variables for Rust

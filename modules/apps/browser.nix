@@ -1,8 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.firefox = {
     enable = true;
-    package = pkgs.librewolf;  # Privacy-focused Firefox fork
-    
+    package = pkgs.librewolf; # Privacy-focused Firefox fork
+
     # Native messaging hosts (for password managers, etc.)
     # nativeMessagingHosts = with pkgs; [ ];
 
@@ -14,8 +15,8 @@
       # ===== LibreWolf/Firefox Settings (about:config) =====
       settings = {
         # === Theme & Appearance ===
-        "browser.theme.content-theme" = 1;  # Dark theme for web content
-        "browser.theme.toolbar-theme" = 1;   # Dark theme for toolbar
+        "browser.theme.content-theme" = 1; # Dark theme for web content
+        "browser.theme.toolbar-theme" = 1; # Dark theme for toolbar
         "browser.in-content.dark-mode" = true;
         "browser.theme.custom-colors" = true;
 
@@ -28,7 +29,7 @@
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         "privacy.firstparty.isolate" = true;
-        "network.cookie.cookieBehavior" = 1;  # Block third-party cookies
+        "network.cookie.cookieBehavior" = 1; # Block third-party cookies
         "privacy.donottrackheader.enabled" = true;
 
         # === Security ===
@@ -39,11 +40,11 @@
         # === Performance ===
         "browser.cache.disk.enable" = true;
         "browser.cache.memory.enable" = true;
-        "browser.sessionstore.interval" = 60000;  # Save session every 60s
+        "browser.sessionstore.interval" = 60000; # Save session every 60s
 
         # === UI Customization ===
         "browser.tabs.drawInTitlebar" = true;
-        "browser.uidensity" = 0;  # Normal density
+        "browser.uidensity" = 0; # Normal density
         "browser.compactmode.show" = true;
 
         # === Search ===
@@ -65,24 +66,32 @@
       # ===== Search Engines =====
       search = {
         default = "ddg";
-        force = true;  # Prevent changes
+        force = true; # Prevent changes
         engines = {
           bing.metaData.hidden = true;
 
           "ddg" = {
-            urls = [{ template = "https://duckduckgo.com/"; }];
+            urls = [ { template = "https://duckduckgo.com/"; } ];
             iconUpdateURL = "https://duckduckgo.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000;
           };
           nix-packages = {
             name = "Nix Packages";
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
 
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
@@ -90,7 +99,7 @@
 
           nixos-wiki = {
             name = "NixOS Wiki";
-            urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
             iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
             definedAliases = [ "@nw" ];
           };

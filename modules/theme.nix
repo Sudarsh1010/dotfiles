@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   # Define custom color scheme using nix-colors format
   colorScheme = lib.mkForce {
     name = "kanagawa-dragon";

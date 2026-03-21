@@ -1,4 +1,5 @@
-{ extraDir, ... }: {
+{ extraDir, ... }:
+{
   programs.neovim = {
     enable = true;
   };
