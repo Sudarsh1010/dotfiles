@@ -4,6 +4,7 @@
     rofi
     grim
     slurp
+    wl-clipboard
   ];
 
   xdg.configFile."hypr" = {
