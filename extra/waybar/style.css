@@ -29,14 +29,12 @@ window#waybar.hidden {
   font-weight: 500;
   margin-bottom: 0px;
   background: #282828;
-  /* default: background: #161320; */
   transition: none;
 }
 
 #workspaces button {
   transition: none;
-  color: #fbf1c7;
-  /* default: color: #b5e8e0; */
+  color: #d5c4a1;
   background: transparent;
 }
 
@@ -50,8 +48,6 @@ window#waybar.hidden {
   text-shadow: inherit;
   color: #d65d0e;
   border-color: #d65d0e;
-  /* border-color: #e8a2af; */
-  /* color: #e8a2af; */
 }
 
 #network {
@@ -61,9 +57,8 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #161320;
+  color: #282828;
   background: #fb4934;
-  /*default: background: #bd93f9;*/
 }
 
 #wireplumber {
@@ -73,8 +68,8 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #1a1826;
-  background: #fae3b0;
+  color: #282828;
+  background: #fabd2f;
 }
 
 #battery {
@@ -84,13 +79,13 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #161320;
-  background: #b5e8e0;
+  color: #282828;
+  background: #8ec07c;
 }
 
 #battery.critical:not(.charging) {
-  background-color: #b5e8e0;
-  color: #161320;
+  background-color: #8ec07c;
+  color: #282828;
   animation-name: blink;
   animation-duration: 1s;
   animation-timing-function: linear;
@@ -100,8 +95,8 @@ window#waybar.hidden {
 
 @keyframes blink {
   to {
-    background-color: #bf616a;
-    color: #b5e8e0;
+    background-color: #cc241d;
+    color: #d5c4a1;
   }
 }
 
@@ -112,8 +107,8 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #161320;
-  background: #f8bd96;
+  color: #282828;
+  background: #fe8019;
 }
 
 #clock {
@@ -124,9 +119,8 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #161320;
+  color: #282828;
   background: #8ec07c;
-  /*default: background: #abe9b3; */
 }
 
 #memory {
@@ -136,9 +130,8 @@ window#waybar.hidden {
   margin-bottom: 0px;
   padding-right: 10px;
   transition: none;
-  color: #161320;
+  color: #282828;
   background: #fabd2f;
-  /*default: background: #ddb6f2; */
 }
 
 #cpu {
@@ -148,9 +141,8 @@ window#waybar.hidden {
   margin-bottom: 0px;
   padding-right: 10px;
   transition: none;
-  color: #161320;
+  color: #282828;
   background: #b8bb26;
-  /*default: background: #96cdfb; */
 }
 
 #custom-launcher {
@@ -161,8 +153,7 @@ window#waybar.hidden {
   padding-right: 5px;
   transition: none;
   color: #fe8019;
-  /*default: color: #89dceb; */
-  background: #161320;
+  background: #282828;
 }
 
 #custom-media {
@@ -172,6 +163,6 @@ window#waybar.hidden {
   padding-right: 10px;
   margin-bottom: 0px;
   transition: none;
-  color: #161320;
-  background: #f2cdcd;
+  color: #282828;
+  background: #d3869b;
 }
