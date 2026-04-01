@@ -118,12 +118,30 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     packages = with pkgs; [
       pavucontrol
     ];
     shell = pkgs.fish;
   };
+
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      dns = [ "1.1.1.1" "8.8.8.8" ];
+      log-driver = "journald";
+      registry-mirrors = [ "https://mirror.gcr.io" ];
+      storage-driver = "overlay2";
+    };
+    # Use the rootless mode - run Docker daemon as non-root user
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
+  users.extraGroups.docker.members = [ "sudarsh" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -143,14 +161,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    docker-compose
+    arion
     appimage-run
+    pkg-config
+    lsof
     nautilus
     thunar
     brave
-    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #   wget
-    #   neovim
-    #   git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,7 +196,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 
   # Nix optimization
   nix.gc = {

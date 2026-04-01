@@ -158,7 +158,7 @@
   home.sessionVariables = {
     # Let Home Manager handle PATH composition
     # Custom vars
-    DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
+    # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
     JAVA_HOME = "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home";
     ANDROID_HOME = "$HOME/Library/Android/sdk";
     PNPM_HOME = "/Users/${username}/Library/pnpm";
@@ -168,5 +168,4 @@
 
   # === Manage Fish theme file ===
   # If you want to symlink your theme declaratively:
-  # xdg.configFile."fish/themes/kanagawa-dragon.fish".source = ../../extra/fish/kanagawa-dragon.fish;
 }
