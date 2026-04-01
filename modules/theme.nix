@@ -2,33 +2,33 @@
 {
   # Define custom color scheme using nix-colors format
   colorScheme = lib.mkForce {
-    name = "kanagawa-dragon";
+    name = "gruvbox-dark-hard";
     variant = "dark";
     palette = {
-      base00 = "#181616";
-      base01 = "#1d1c19";
-      base02 = "#282727";
-      base03 = "#393836";
-      base04 = "#9e9b93";
-      base05 = "#a6a69c";
-      base06 = "#c0c3c0";
-      base07 = "#c5c9c5";
-      base08 = "#c4746e";
-      base09 = "#b6927b";
-      base0A = "#c4b28a";
-      base0B = "#87a987";
-      base0C = "#8ea4a2";
-      base0D = "#8ba4b0";
-      base0E = "#a292a3";
-      base0F = "#c4746e";
-      base10 = "#12120f";
-      base11 = "#0d0c0c";
-      base12 = "#c4746e";
-      base13 = "#b98d7b";
-      base14 = "#8a9a7b";
-      base15 = "#8ea4a2";
-      base16 = "#8ba4b0";
-      base17 = "#a292a3";
+      base00 = "#282828"; # bg0 (dark)
+      base01 = "#3c3836"; # bg1
+      base02 = "#504945"; # bg2
+      base03 = "#665c54"; # bg3
+      base04 = "#bdae93"; # grey1
+      base05 = "#d5c4a1"; # grey2
+      base06 = "#ebdbb2"; # fg1
+      base07 = "#fbf1c7"; # fg0
+      base08 = "#fb4934"; # red bright
+      base09 = "#fe8019"; # orange bright
+      base0A = "#fabd2f"; # yellow bright
+      base0B = "#b8bb26"; # green bright
+      base0C = "#8ec07c"; # aqua bright
+      base0D = "#83a598"; # blue bright
+      base0E = "#d3869b"; # purple bright
+      base0F = "#d65d0e"; # faded orange
+      base10 = "#141414"; # darkest bg
+      base11 = "#0d0d0d"; # even darker
+      base12 = "#cc241d"; # red neutral
+      base13 = "#d79921"; # yellow neutral
+      base14 = "#98971a"; # green neutral
+      base15 = "#689d6a"; # aqua neutral
+      base16 = "#458588"; # blue neutral
+      base17 = "#b16286"; # purple neutral
     };
   };
 }
