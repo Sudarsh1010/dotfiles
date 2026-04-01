@@ -13,6 +13,7 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    # opencode.url = "github:anomalyco/opencode/v1.3.1";
   };
 
   outputs =
