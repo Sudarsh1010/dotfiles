@@ -1,13 +1,8 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    opencode
-  ];
-
   # === Tmux Configuration ===
   programs.tmux = {
     enable = true;
-    terminal = "screen-256color";
 
     # Core settings from your config
     prefix = "C-s";
@@ -19,10 +14,17 @@
     # Your exact key bindings and config
     extraConfig = ''
       set -g status off
+      set-option -g renumber-windows on
 
       # === Plugin Management (TPM) ===
       set -g @plugin 'tmux-plugins/tpm'
       set -g @plugin 'aserowy/tmux.nvim'
+
+      # Set terminal with proper colors
+      set -g default-terminal "tmux-256color"
+      set -as terminal-features ",xterm-256color:RGB"
+
+      setw -g pane-base-index 1
 
       # === Vim-style pane navigation via tmux.nvim ===
       # tmux.nvim handles C-h/j/k/l automatically via Neovim integration
@@ -54,7 +56,7 @@
     recursive = true;
   };
 
-  # === Lazygit Configuration (Kanagawa Dragon theme) ===
+  # === Lazygit Configuration ===
   programs.lazygit = {
     enable = true;
     enableFishIntegration = true;
@@ -67,7 +69,7 @@
             "bold"
           ];
           # Inactive borders - subtle comment color
-          inactiveBorderColor = [ config.colorScheme.palette.base03 ];
+          inactiveBorderColor = [ "#928374" ];
           # Search highlight - bright green for visibility
           searchingActiveBorderColor = [
             config.colorScheme.palette.base0B

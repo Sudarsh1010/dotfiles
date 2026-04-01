@@ -67,7 +67,7 @@
       {
         context = "vim_mode == normal && !menu";
         bindings = {
-          "space e" = "workspace::ToggleLeftDock";
+          "space e" = "workspace::ToggleRightDock";
           "space f f" = "file_finder::Toggle";
           "space space" = "file_finder::Toggle";
           "space f b" = "pane::ActivateNextItem";
@@ -184,7 +184,7 @@
       theme = {
         mode = "dark";
         light = "Gruvbox Light Soft";
-        dark = "Kanagawa Dragon";
+        dark = "Gruvbox Dark Hard";
       };
       relative_line_numbers = "enabled";
       hide_mouse = "on_typing_and_movement";
@@ -199,12 +199,15 @@
       use_autoclose = true;
       use_auto_surround = true;
       auto_indent = true;
+      vim = { use_smartcase_find = true; };
       tabs = {
         file_icons = true;
         git_status = true;
       };
+      git_panel = { dock = "right"; };
+      agent = { dock = "left"; };
       project_panel = {
-        dock = "left";
+        dock = "right";
         default_width = 240;
         file_icons = true;
         folder_icons = true;

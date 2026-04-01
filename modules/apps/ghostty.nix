@@ -1,7 +1,5 @@
 {
-  colorLib,
   pkgs,
-  config,
   ...
 }:
 {
@@ -12,12 +10,12 @@
 
     enableFishIntegration = true;
     settings = {
-      font-family = "Iosevka Nerd Font Proto";
+      font-family = "Iosevka Nerd Font Propo";
       font-size = 12;
       adjust-cell-height = 8;
 
       window-padding-x = 8;
-      window-padding-y = 8;
+      window-padding-y = 4;
       window-padding-balance = true;
 
       app-notifications = "no-clipboard-copy";
@@ -28,16 +26,7 @@
 
       # Reference our custom theme by name
       background-opacity = 1;
-      theme = config.colorScheme.name;
-    };
-
-    themes."${config.colorScheme.name}" = {
-      background = config.colorScheme.palette.base00;
-      cursor-color = config.colorScheme.palette.base05;
-      foreground = config.colorScheme.palette.base05;
-      palette = (colorLib.ghosttyPalette config.colorScheme.palette);
-      selection-background = config.colorScheme.palette.base04;
-      selection-foreground = config.colorScheme.palette.base00;
+      theme = "Gruvbox Dark";
     };
   };
 }

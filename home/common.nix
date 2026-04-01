@@ -10,7 +10,8 @@
   ];
 
   home.packages = with pkgs; [
-    stremio-linux-shell
+    htop
+    btop
   ];
   home.username = username;
   home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
