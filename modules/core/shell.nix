@@ -164,8 +164,8 @@
     # Let Home Manager handle PATH composition
     # Custom vars
     # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
-    JAVA_HOME = "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home";
-    ANDROID_HOME = "$HOME/Library/Android/sdk";
+    # JAVA_HOME = "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home";
+    # ANDROID_HOME = "$HOME/Library/Android/sdk";
     PNPM_HOME = "/Users/${username}/Library/pnpm";
     XDG_CONFIG_HOME = "$HOME/.config";
     CPPFLAGS = "-I/opt/homebrew/opt/openjdk/include";

@@ -78,6 +78,8 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       nvidia-vaapi-driver
+      vulkan-loader
+      mesa
     ];
   };
 
@@ -103,6 +105,18 @@
 
   programs.fish.enable = true;
 
+  security.sudo.extraRules = [
+    {
+      groups = ["wheel"]; # Your user
+      commands = [
+        {
+          command = "/opt/sst/tunnel tunnel start *";
+          options = ["NOPASSWD" "SETENV"];
+        }
+      ];
+    }
+  ];
+
   fonts.packages = with pkgs; [
     noto-fonts
     adwaita-fonts
@@ -119,6 +133,8 @@
       "networkmanager"
       "wheel"
       "docker"
+      "kvm"
+      "adbusers"
     ];
     packages = with pkgs; [
       pavucontrol
@@ -145,6 +161,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
   zramSwap.enable = true;
 
   programs.nix-ld.enable = true;
@@ -161,6 +178,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    android-studio
     docker-compose
     arion
     appimage-run
