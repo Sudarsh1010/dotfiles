@@ -28,6 +28,10 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.editor.outline" },
+    { import = "lazyvim.plugins.extras.editor.aerial" },
+    { import = "lazyvim.plugins.extras.editor.fzf" },
+    { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    { import = "lazyvim.plugins.extras.editor.telescope" },
 
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.git" },
@@ -44,6 +48,14 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.toml" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.elixir" },
+    { import = "lazyvim.plugins.extras.lang.zig" },
+    { import = "lazyvim.plugins.extras.lang.kotlin" },
+    { import = "lazyvim.plugins.extras.lang.scala" },
+    { import = "lazyvim.plugins.extras.lang.java" },
+    { import = "lazyvim.plugins.extras.lang.nix" },
+    { import = "lazyvim.plugins.extras.lang.typst" },
 
     { import = "lazyvim.plugins.extras.linting.eslint" },
 

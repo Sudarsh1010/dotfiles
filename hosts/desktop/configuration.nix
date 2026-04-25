@@ -107,11 +107,14 @@
 
   security.sudo.extraRules = [
     {
-      groups = ["wheel"]; # Your user
+      groups = [ "wheel" ]; # Your user
       commands = [
         {
           command = "/opt/sst/tunnel tunnel start *";
-          options = ["NOPASSWD" "SETENV"];
+          options = [
+            "NOPASSWD"
+            "SETENV"
+          ];
         }
       ];
     }
@@ -145,7 +148,10 @@
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
-      dns = [ "1.1.1.1" "8.8.8.8" ];
+      dns = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
       log-driver = "journald";
       registry-mirrors = [ "https://mirror.gcr.io" ];
       storage-driver = "overlay2";
@@ -178,7 +184,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    android-studio
+    (android-studio.override {
+      tiling_wm = true;
+      forceWayland = true;
+    })
+    jdk17
+    android-tools
     docker-compose
     arion
     appimage-run

@@ -24,7 +24,10 @@ vim.g.snacks_animate = false
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = "ruff"
 vim.g.lazyvim_picker = "fzf"
+
+-- vim.g.lazyvim_cmp = "blink.cmp"
 vim.g.lazyvim_cmp = "nvim-cmp"
+
 vim.g.lazyvim_rust_diagnostics = "bacon-ls"
 
 -- for detecting the LSP root
@@ -49,24 +52,22 @@ opt.listchars = { tab = "→ ", space = " ", nbsp = "⍽", eol = "⏎" } -- Whit
 opt.listchars:append({ lead = "╎" })
 opt.list = true
 
-vim.g.lazyvim_blink_main = true
-
 -- Disable "No information available" notification on hover
 -- plus define border for hover window
 vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
   config = config
-    or {
-      border = {
-        { "╭", "Comment" },
-        { "─", "Comment" },
-        { "╮", "Comment" },
-        { "│", "Comment" },
-        { "╯", "Comment" },
-        { "─", "Comment" },
-        { "╰", "Comment" },
-        { "│", "Comment" },
-      },
-    }
+      or {
+        border = {
+          { "╭", "Comment" },
+          { "─", "Comment" },
+          { "╮", "Comment" },
+          { "│", "Comment" },
+          { "╯", "Comment" },
+          { "─", "Comment" },
+          { "╰", "Comment" },
+          { "│", "Comment" },
+        },
+      }
   config.focus_id = ctx.method
 
   if not (result and result.contents) then

@@ -1,13 +1,5 @@
 {
-  "extras": [
-    "lazyvim.plugins.extras.editor.aerial",
-    "lazyvim.plugins.extras.editor.fzf",
-    "lazyvim.plugins.extras.editor.inc-rename",
-    "lazyvim.plugins.extras.editor.telescope",
-    "lazyvim.plugins.extras.lang.clangd",
-    "lazyvim.plugins.extras.lang.elixir",
-    "lazyvim.plugins.extras.lang.zig"
-  ],
+  "extras": [],
   "install_version": 7,
   "news": {
     "NEWS.md": "11866"

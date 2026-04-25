@@ -47,6 +47,22 @@
 
       # XDG base directory
       set -gx PATH ~/.nix-profile/bin /nix/var/nix/profiles/default/bin $PATH
+
+      # Reuse existing ssh-agent or start one
+      if not set -q SSH_AUTH_SOCK
+          set -gx SSH_AUTH_SOCK ~/.ssh/agent.sock
+      end
+
+      if not test -S $SSH_AUTH_SOCK
+          eval (ssh-agent -c -a $SSH_AUTH_SOCK)
+      end
+
+      # Add keys if not already loaded
+      ssh-add -l >/dev/null 2>&1
+      if test $status -ne 0
+          ssh-add ~/.ssh/github-main 2>/dev/null
+          ssh-add ~/.ssh/github-orbit 2>/dev/null
+      end
     '';
 
     # Interactive initialization (runs only in interactive shells)
@@ -141,35 +157,55 @@
   # === PATH Management ===
   # Home Manager manages PATH via sessionPath.
   # We add custom paths here instead of hardcoding in fish.
-  home.sessionPath = [
-    "$HOME/bin"
-    "$HOME/.bun/bin"
-    "$HOME/.orbstack/bin"
-    "$HOME/go/bin"
-    "$HOME/.cargo/bin"
-    # NVM path is version-specific; better to init nvm in shellInit if needed
-    "$HOME/.local/share/nvm/v26.2.0/bin"
-    "$HOME/.local/share/google-cloud-sdk/bin"
-    "/opt/homebrew/bin"
-    "/opt/homebrew/sbin"
-    "/usr/local/go/bin"
-    "/opt/homebrew/opt/postgresql@18/bin"
-    "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
-    "$HOME/Library/Android/sdk/emulator"
-    "$HOME/Library/Android/sdk/platform-tools"
-  ];
+  home.sessionPath =
+    let
+      commonPaths = [
+        "$HOME/bin"
+        "$HOME/.bun/bin"
+        "$HOME/.orbstack/bin"
+        "$HOME/go/bin"
+        "$HOME/.cargo/bin"
+        # NVM path is version-specific; better to init nvm in shellInit if needed
+        "$HOME/.local/share/nvm/v26.2.0/bin"
+      ];
+      macPaths = [
+        "$HOME/.local/share/google-cloud-sdk/bin"
+        "/opt/homebrew/bin"
+        "/opt/homebrew/sbin"
+        "/usr/local/go/bin"
+        "/opt/homebrew/opt/postgresql@18/bin"
+        "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+        "$HOME/Library/Android/sdk/emulator"
+        "$HOME/Library/Android/sdk/platform-tools"
+      ];
+      linuxPaths = [
+        "$HOME/Android/Sdk/platform-tools"
+        "$HOME/Android/Sdk/emulator"
+        "$HOME/Android/Sdk/cmdline-tools/latest/bin"
+      ];
+    in
+    commonPaths ++ (if pkgs.stdenv.isDarwin then macPaths else linuxPaths);
 
   # === Environment Variables ===
-  home.sessionVariables = {
-    # Let Home Manager handle PATH composition
-    # Custom vars
-    # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
-    # JAVA_HOME = "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home";
-    # ANDROID_HOME = "$HOME/Library/Android/sdk";
-    PNPM_HOME = "/Users/${username}/Library/pnpm";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    CPPFLAGS = "-I/opt/homebrew/opt/openjdk/include";
-  };
+  home.sessionVariables =
+    let
+      commonVars = {
+        XDG_CONFIG_HOME = "$HOME/.config";
+      };
+      platformVars =
+        if pkgs.stdenv.isDarwin then
+          {
+            ANDROID_HOME = "$HOME/Library/Android/sdk";
+            PNPM_HOME = "/Users/${username}/Library/pnpm";
+            CPPFLAGS = "-I/opt/homebrew/opt/openjdk/include";
+          }
+        else
+          {
+            ANDROID_HOME = "$HOME/Android/Sdk";
+            QT_QPA_PLATFORM = "wayland;xcb";
+          };
+    in
+    commonVars // platformVars;
 
   # === Manage Fish theme file ===
   # If you want to symlink your theme declaratively:
