@@ -147,7 +147,7 @@
     "$HOME/go/bin"
     "$HOME/.cargo/bin"
     # NVM path is version-specific; better to init nvm in shellInit if needed
-    "$HOME/.local/share/nvm/v24.14.0/bin"
+    "$HOME/.local/share/nvm//bin"
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
     "/usr/local/go/bin"
