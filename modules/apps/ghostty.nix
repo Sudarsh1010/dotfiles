@@ -25,7 +25,7 @@
       macos-option-as-alt = true;
 
       # Reference our custom theme by name
-      background-opacity = 1;
+      background-opacity = 0.95;
       theme = "Gruvbox Dark";
     };
   };

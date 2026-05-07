@@ -24,7 +24,7 @@ vim.g.snacks_animate = false
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = "ruff"
 vim.g.lazyvim_picker = "fzf"
-vim.g.lazyvim_cmp = "blink.cmp"
+vim.g.lazyvim_cmp = "nvim-cmp"
 vim.g.lazyvim_rust_diagnostics = "bacon-ls"
 
 -- for detecting the LSP root

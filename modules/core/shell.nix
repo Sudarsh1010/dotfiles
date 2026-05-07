@@ -144,10 +144,11 @@
   home.sessionPath = [
     "$HOME/bin"
     "$HOME/.bun/bin"
+    "$HOME/.orbstack/bin"
     "$HOME/go/bin"
     "$HOME/.cargo/bin"
     # NVM path is version-specific; better to init nvm in shellInit if needed
-    "$HOME/.local/share/nvm//bin"
+    "$HOME/.local/share/nvm/v26.0.0/bin"
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
     "/usr/local/go/bin"
