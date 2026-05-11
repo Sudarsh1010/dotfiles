@@ -7,6 +7,5 @@
     ../../home/common.nix
     ../../modules/core/macos.nix
     ../../modules/coding/default.nix
-    ../../modules/apps/browser.nix
   ];
 }

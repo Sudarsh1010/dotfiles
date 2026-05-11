@@ -1,5 +1,12 @@
 return {
   {
+    "cormacrelf/dark-notify",
+    config = function()
+      require("dark_notify").run()
+    end,
+  },
+
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()

@@ -11,7 +11,8 @@
     enableFishIntegration = true;
     settings = {
       font-family = "Iosevka Nerd Font Propo";
-      font-size = 12;
+      font-thicken = true;
+      font-size = 14;
       adjust-cell-height = 8;
 
       window-padding-x = 8;
@@ -26,7 +27,7 @@
 
       # Reference our custom theme by name
       background-opacity = 0.95;
-      theme = "Gruvbox Dark";
+      theme = "light:Gruvbox Light,dark:Gruvbox Dark";
     };
   };
 }

@@ -32,7 +32,6 @@
     nix-colors.homeManagerModules.default
     ../../home/common.nix
     ../../modules/hyprland/default.nix
-    ../../modules/apps/browser.nix
     ../../modules/coding/default.nix
   ];
 }
