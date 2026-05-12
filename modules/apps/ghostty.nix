@@ -12,7 +12,7 @@
     settings = {
       font-family = "Iosevka Nerd Font Propo";
       font-thicken = true;
-      font-size = 14;
+      font-size = 16;
       adjust-cell-height = 8;
 
       window-padding-x = 8;
