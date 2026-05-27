@@ -12,6 +12,11 @@
     cargo-edit # Cargo subcommands for managing dependencies
     cargo-watch # Automatically rebuild on file changes
     cargo-nextest # Modern test runner
+    bacon # Background `cargo check` runner used by LazyVim rust diagnostics
+    bacon-ls # LSP server that surfaces bacon diagnostics in neovim
+    # Make libiconv available so any stray `cargo install` from nvim/Mason
+    # can link on darwin (avoids `ld: library not found for -liconv`).
+    libiconv
   ];
 
   # Set environment variables for Rust
