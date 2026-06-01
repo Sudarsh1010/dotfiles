@@ -10,7 +10,7 @@
 
     enableFishIntegration = true;
     settings = {
-      font-family = "Iosevka Nerd Font Propo";
+      font-family = "IoskeleyMonoTerm Nerd Font";
       font-thicken = true;
       font-size = 16;
       adjust-cell-height = 8;
