@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
-  version = not vim.g.lazyvim_blink_main and "*",
-  build = vim.g.lazyvim_blink_main and "cargo build --release",
+  version = "*",
+  build = "cargo build --release",
   opts_extend = {
     "sources.completion.enabled_providers",
     "sources.compat",
@@ -14,7 +14,7 @@ return {
       "saghen/blink.compat",
       optional = true, -- make optional so it's only enabled if any extras need it
       opts = {},
-      version = not vim.g.lazyvim_blink_main and "*",
+      version = "*",
     },
   },
   event = { "InsertEnter", "CmdlineEnter" },

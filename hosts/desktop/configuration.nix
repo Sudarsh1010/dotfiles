@@ -26,23 +26,21 @@
     jack.enable = true;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  environment.etc."resolv.conf".text = ''
-    nameserver 1.1.1.1
-    nameserver 1.0.0.1
-  '';
-  # networking.nameservers = [
-  #   "1.1.1.1"
-  #   "1.0.0.1"
-  # ];
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -71,6 +69,30 @@
   # Flatpak
   services.flatpak.enable = false;
 
+  services.cloudflared.enable = true;
+
+  networking.nftables.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ];
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    firewallBackend = "nftables";
+
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = false;
+    };
+  };
+
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
+
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableAllFirmware = true;
   hardware.graphics = {
@@ -93,6 +115,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
+  hardware.nvidia-container-toolkit.enable = true;
 
   programs.dconf.enable = true;
   programs.hyprland = {
@@ -137,6 +160,7 @@
       "wheel"
       "docker"
       "kvm"
+      "libvirtd"
       "adbusers"
     ];
     packages = with pkgs; [
@@ -160,6 +184,9 @@
     rootless = {
       enable = true;
       setSocketVariable = true;
+      extraPackages = with pkgs; [
+        libnvidia-container
+      ];
     };
   };
 
@@ -198,6 +225,11 @@
     nautilus
     thunar
     brave
+    cryptsetup
+    age
+    sops
+    jq
+    cloudflared
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -210,8 +242,14 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

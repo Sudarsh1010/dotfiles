@@ -12,8 +12,8 @@
     settings = {
       font-family = "IoskeleyMono Nerd Font";
       font-thicken = true;
-      font-size = 14;
-      adjust-cell-height = 8;
+      font-size = 10.5;
+      adjust-cell-height = 7;
 
       window-padding-x = 8;
       window-padding-y = 4;

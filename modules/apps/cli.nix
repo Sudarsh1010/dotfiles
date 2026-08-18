@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  programs.codex.enable = true;
   # === Tmux Configuration ===
   programs.tmux = {
     enable = true;

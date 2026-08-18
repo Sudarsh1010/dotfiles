@@ -25,8 +25,8 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = "ruff"
 vim.g.lazyvim_picker = "fzf"
 
--- vim.g.lazyvim_cmp = "blink.cmp"
-vim.g.lazyvim_cmp = "nvim-cmp"
+vim.g.lazyvim_cmp = "blink.cmp"
+-- vim.g.lazyvim_cmp = "nvim-cmp"
 
 vim.g.lazyvim_rust_diagnostics = "bacon-ls"
 
@@ -52,34 +52,34 @@ opt.listchars = { tab = "→ ", space = " ", nbsp = "⍽", eol = "⏎" } -- Whit
 opt.listchars:append({ lead = "╎" })
 opt.list = true
 
--- Disable "No information available" notification on hover
--- plus define border for hover window
-vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
-  config = config
-      or {
-        border = {
-          { "╭", "Comment" },
-          { "─", "Comment" },
-          { "╮", "Comment" },
-          { "│", "Comment" },
-          { "╯", "Comment" },
-          { "─", "Comment" },
-          { "╰", "Comment" },
-          { "│", "Comment" },
-        },
-      }
-  config.focus_id = ctx.method
+-- -- Disable "No information available" notification on hover
+-- -- plus define border for hover window
+-- vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+--   config = config
+--       or {
+--         border = {
+--           { "╭", "Comment" },
+--           { "─", "Comment" },
+--           { "╮", "Comment" },
+--           { "│", "Comment" },
+--           { "╯", "Comment" },
+--           { "─", "Comment" },
+--           { "╰", "Comment" },
+--           { "│", "Comment" },
+--         },
+--       }
+--   config.focus_id = ctx.method
 
-  if not (result and result.contents) then
-    return
-  end
+--   if not (result and result.contents) then
+--     return
+--   end
 
-  local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
-  markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+--   local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+--   markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
 
-  if vim.tbl_isempty(markdown_lines) then
-    return
-  end
+--   if vim.tbl_isempty(markdown_lines) then
+--     return
+--   end
 
-  return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
-end
+--   return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
+-- end
