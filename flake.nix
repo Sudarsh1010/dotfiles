@@ -27,14 +27,14 @@
     }@inputs:
     let
       hmExtraSpecialArgs = {
-        username = "sudarshjain";
+        username = "sudarsh";
         extraDir = ./extra;
         colorLib = import ./lib/colors.nix;
       };
     in
     {
       # This defines your macOS Home Manager configuration
-      homeConfigurations."sudarshjain@mac" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           overlays = [ nur.overlays.default ]; # Add NUR overlay

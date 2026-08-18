@@ -8,4 +8,9 @@
     ../../modules/core/macos.nix
     ../../modules/coding/default.nix
   ];
+
+  home.sessionPath = [
+    "/usr/local/go/bin"
+    "$HOME/go/bin"
+  ];
 }

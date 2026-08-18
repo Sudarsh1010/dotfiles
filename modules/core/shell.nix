@@ -148,11 +148,15 @@
     "$HOME/go/bin"
     "$HOME/.cargo/bin"
     # NVM path is version-specific; better to init nvm in shellInit if needed
-    "$HOME/.local/share/nvm/v26.1.0/bin"
+    "$HOME/.local/share/nvm/v26.2.0/bin"
+    "$HOME/.local/share/google-cloud-sdk/bin"
     "/opt/homebrew/bin"
     "/opt/homebrew/sbin"
     "/usr/local/go/bin"
     "/opt/homebrew/opt/postgresql@18/bin"
+    "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+    "$HOME/Library/Android/sdk/emulator"
+    "$HOME/Library/Android/sdk/platform-tools"
   ];
 
   # === Environment Variables ===

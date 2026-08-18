@@ -1,13 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  # Install Go
-  home.packages = with pkgs; [
-    go
-    gopls # Go LSP
-    go-tools # Extra Go tools
-    delve # Debugger
-    golangci-lint # Linter aggregator
-  ];
+  # Go itself is managed outside Nix; keep the user Go bin path for tools installed by `go install`.
 
   # Set Go environment variables
   home.sessionVariables = {
