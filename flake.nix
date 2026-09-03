@@ -13,6 +13,11 @@
     mac-app-util.url = "github:hraban/mac-app-util";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    # Tracks master; update with `nix flake update herdr`
+    herdr = {
+      url = "github:herdrdev/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # opencode.url = "github:anomalyco/opencode/v1.3.1";
   };
 
@@ -31,13 +36,17 @@
         extraDir = ./extra;
         colorLib = import ./lib/colors.nix;
       };
+      # Expose the herdr package as pkgs.herdr on every host/profile
+      herdrOverlay = final: _prev: {
+        herdr = inputs.herdr.packages.${final.system}.default;
+      };
     in
     {
       # This defines your macOS Home Manager configuration
       homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
-          overlays = [ nur.overlays.default ]; # Add NUR overlay
+          overlays = [ nur.overlays.default herdrOverlay ]; # Add NUR overlay
           config.allowUnfree = true;
         };
         modules = [
@@ -63,7 +72,7 @@
           (
             { config, pkgs, ... }:
             {
-              nixpkgs.overlays = [ nur.overlays.default ];
+              nixpkgs.overlays = [ nur.overlays.default herdrOverlay ];
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -84,8 +93,8 @@
       nixosConfigurations."homelab" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/homelab/configuration.nix
-          # You can import your common modules here too!
+          ./hosts/server/configuration.nix
+          { nixpkgs.overlays = [ herdrOverlay ]; }
         ];
       };
     };
