@@ -19,6 +19,32 @@
     "15=${palette.base07}"
   ];
 
+  # Convert nix-colors palette to foot.ini [colors] format.
+  # nix-colors normalizes palette values to bare RRGGBB (no '#'), which is
+  # exactly what foot wants. Regular ANSI slots use the neutral gruvbox
+  # variants, bright slots the bright ones, foreground is fg1 -- matching
+  # Ghostty's built-in "Gruvbox Dark".
+  footPalette = palette: {
+    foreground = palette.base06;
+    background = palette.base00;
+    regular0 = palette.base00;
+    regular1 = palette.base12;
+    regular2 = palette.base14;
+    regular3 = palette.base13;
+    regular4 = palette.base16;
+    regular5 = palette.base17;
+    regular6 = palette.base15;
+    regular7 = palette.base04;
+    bright0 = palette.base03;
+    bright1 = palette.base08;
+    bright2 = palette.base0B;
+    bright3 = palette.base0A;
+    bright4 = palette.base0D;
+    bright5 = palette.base0E;
+    bright6 = palette.base0C;
+    bright7 = palette.base07;
+  };
+
   # Convert nix-colors palette to Starship palette format
   starshipPalette = palette: {
     bg = palette.base00;

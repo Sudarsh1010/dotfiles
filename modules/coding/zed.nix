@@ -174,8 +174,8 @@
       session = {
         trust_all_worktrees = true;
       };
-      ui_font_family = "Ioskeley Mono";
-      buffer_font_family = "Ioskeley Mono";
+      ui_font_family = "IoskeleyMono Nerd Font Mono";
+      buffer_font_family = "IoskeleyMono Nerd Font Mono";
       vim_mode = true;
       icon_theme = "Zed (Default)";
       base_keymap = "VSCode";
@@ -215,7 +215,7 @@
         hide_gitignore = false;
       };
       terminal = {
-        font_family = "Ioskeley Mono";
+        font_family = "IoskeleyMono Nerd Font Mono";
         font_size = 14;
         line_height = "comfortable";
         shell = {

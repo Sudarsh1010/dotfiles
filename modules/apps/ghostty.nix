@@ -10,9 +10,9 @@
 
     enableFishIntegration = true;
     settings = {
-      font-family = "IoskeleyMono Nerd Font";
+      font-family = "IoskeleyMono Nerd Font Mono";
       font-thicken = true;
-      font-size = 14;
+      font-size = 12;
       adjust-cell-height = 7;
 
       window-padding-x = 8;

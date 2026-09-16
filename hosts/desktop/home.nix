@@ -26,12 +26,20 @@
       name = "Sans";
       size = 11;
     };
+
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
+
+  # Advertise dark mode via the settings portal (browsers, Electron, libadwaita apps)
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
   imports = [
     nix-colors.homeManagerModules.default
     ../../home/common.nix
     ../../modules/hyprland/default.nix
     ../../modules/coding/default.nix
+    ../../modules/apps/foot.nix
+    ../../modules/apps/obs.nix
   ];
 }

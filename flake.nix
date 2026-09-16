@@ -18,6 +18,14 @@
       url = "github:herdrdev/herdr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Oh My Pi (omp.sh) terminal coding agent, built from source via its flake.
+    # Keeps its own nixpkgs pin so the bun2nix/rust toolchain stays as upstream tested it.
+    oh-my-pi.url = "github:can1357/oh-my-pi";
+    # Zed editor, built from source via its official flake (tracks main).
+    # Deliberately does NOT follow our nixpkgs: keeping upstream's own pins keeps
+    # derivations identical to CI, so builds are served from zed.cachix.org.
+    # Update with `nix flake update zed`.
+    zed.url = "github:zed-industries/zed";
     # opencode.url = "github:anomalyco/opencode/v1.3.1";
   };
 
@@ -38,7 +46,16 @@
       };
       # Expose the herdr package as pkgs.herdr on every host/profile
       herdrOverlay = final: _prev: {
-        herdr = inputs.herdr.packages.${final.system}.default;
+        herdr = inputs.herdr.packages.${final.stdenv.hostPlatform.system}.default;
+      };
+      # Expose Oh My Pi as pkgs.omp
+      ompOverlay = final: _prev: {
+        omp = inputs.oh-my-pi.packages.${final.stdenv.hostPlatform.system}.omp;
+      };
+      # Replace nixpkgs' zed-editor with upstream's flake build (tracks main,
+      # binary-cached at zed.cachix.org). Bump with `nix flake update zed`.
+      zedOverlay = final: _prev: {
+        zed-editor = inputs.zed.packages.${final.stdenv.hostPlatform.system}.default;
       };
     in
     {
@@ -46,7 +63,12 @@
       homeConfigurations."sudarsh@mac" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
-          overlays = [ nur.overlays.default herdrOverlay ]; # Add NUR overlay
+          overlays = [
+            nur.overlays.default
+            herdrOverlay
+            ompOverlay
+            zedOverlay
+          ]; # Add NUR overlay
           config.allowUnfree = true;
         };
         modules = [
@@ -72,7 +94,12 @@
           (
             { config, pkgs, ... }:
             {
-              nixpkgs.overlays = [ nur.overlays.default herdrOverlay ];
+              nixpkgs.overlays = [
+                nur.overlays.default
+                herdrOverlay
+                ompOverlay
+                zedOverlay
+              ];
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

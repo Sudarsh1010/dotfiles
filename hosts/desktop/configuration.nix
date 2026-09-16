@@ -149,6 +149,13 @@
     nerd-fonts.iosevka
     nerd-fonts._0xproto
     nerd-fonts.iosevka-term
+    (pkgs.callPackage ../../packages/ioskeley-mono.nix { })
+  ];
+
+  # Use IoskeleyMono wherever a monospace font is requested
+  fonts.fontconfig.defaultFonts.monospace = [
+    "IoskeleyMono Nerd Font Mono"
+    "Noto Sans Mono"
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -208,6 +215,10 @@
     # ... etc
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.12"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -216,6 +227,7 @@
       forceWayland = true;
     })
     jdk17
+    ventoy
     android-tools
     docker-compose
     arion
@@ -277,5 +289,24 @@
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+  ];
+  nix.settings.user-agent-suffix = "nix";
+
+  # Workaround: crates.io's API download endpoint 403s the "curl/x.y.z"
+  # User-Agent that pkgs.fetchurl hardcodes, which breaks importCargoLock-style
+  # crate vendoring (e.g. the herdr flake input). The fetchurl builder appends
+  # $NIX_CURL_FLAGS *after* its hardcoded --user-agent, so a later
+  # --user-agent wins. fetchurl already declares NIX_CURL_FLAGS in its
+  # impureEnvVars (Nix >= 2.19), so the daemon forwards it from the client
+  # environment automatically -- we just set a descriptive UA for all
+  # sessions and let sudo keep it so plain `sudo nixos-rebuild` works.
+  environment.sessionVariables.NIX_CURL_FLAGS = "--user-agent nixpkgs-fetchurl";
+  security.sudo.extraConfig = ''Defaults env_keep += "NIX_CURL_FLAGS"'';
+
+  # Upstream Zed binary cache — lets the zed flake build (tracks main) substitute
+  # from CI instead of compiling locally.
+  nix.settings.extra-substituters = [ "https://zed.cachix.org" ];
+  nix.settings.extra-trusted-public-keys = [
+    "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
   ];
 }
