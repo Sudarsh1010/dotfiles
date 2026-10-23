@@ -39,7 +39,12 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # Enable networking
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      # Don't let DHCP-provided DNS (router) into resolv.conf;
+      # use only networking.nameservers above (Cloudflare).
+      dns = "none";
+    };
   };
 
   # Set your time zone.
@@ -122,6 +127,7 @@
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    withUWSM = true;
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
@@ -154,7 +160,7 @@
 
   # Use IoskeleyMono wherever a monospace font is requested
   fonts.fontconfig.defaultFonts.monospace = [
-    "IoskeleyMono Nerd Font Mono"
+    "IoskeleyMono Nerd Font"
     "Noto Sans Mono"
   ];
 
@@ -204,16 +210,26 @@
   nixpkgs.config.android_sdk.accept_license = true;
   zramSwap.enable = true;
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add libraries as needed; start minimal and add as errors appear
-    glibc
-    gtk3
-    libGL
-    libxkbcommon
-    openssl
-    # ... etc
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libx11
+      libxrandr
+      libxxf86vm
+      libxi
+      libxcursor
+      libxinerama
+      libGL
+      libxkbcommon
+      wayland
+      alsa-lib
+      glibc
+      gtk3
+      libGL
+      libxkbcommon
+      openssl
+    ];
+  };
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.12"
@@ -242,6 +258,9 @@
     sops
     jq
     cloudflared
+    (pkgs.wrapOBS {
+      plugins = [ pkgs.obs-studio-plugins.obs-vaapi ]; # Optional: for hardware encoding
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

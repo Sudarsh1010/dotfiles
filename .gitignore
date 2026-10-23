@@ -1,3 +1,7 @@
 # nix build artifacts
 result
 result-*
+
+# Delta tarball kept in local Nix store only (see packages/delta.nix)
+delta-linux-x86_64.tar.gz
+*.swp

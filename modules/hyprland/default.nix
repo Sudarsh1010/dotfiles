@@ -1,5 +1,9 @@
 { pkgs, extraDir, ... }:
 {
+  # Polkit authentication agent (GUI prompt for pkexec/polkit requests).
+  # Hyprland's welcome screen flags this as missing otherwise.
+  services.hyprpolkitagent.enable = true;
+
   home.packages = with pkgs; [
     rofi
     grim

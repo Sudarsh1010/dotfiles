@@ -5,10 +5,12 @@
     settings = {
       main = {
         font = "IoskeleyMono Nerd Font Mono:size=12";
-        pad = "8x4";
+        pad = "10x8";
+        line-height = "18";
       };
       colors = {
         alpha = 0.95;
+        cursor = "1d2021 ebdbb2";
       }
       // colorLib.footPalette config.colorScheme.palette;
       mouse = {

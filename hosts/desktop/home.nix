@@ -40,6 +40,11 @@
     ../../modules/hyprland/default.nix
     ../../modules/coding/default.nix
     ../../modules/apps/foot.nix
-    ../../modules/apps/obs.nix
+  ];
+
+  home.packages = [
+    # Delta agent workspace — requires the official tarball in the store,
+    # see packages/delta.nix for the one-time nix-prefetch-url step.
+    (pkgs.callPackage ../../packages/delta.nix { })
   ];
 }

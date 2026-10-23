@@ -172,7 +172,7 @@
         "$HOME/go/bin"
         "$HOME/.cargo/bin"
         # NVM path is version-specific; better to init nvm in shellInit if needed
-        "$HOME/.local/share/nvm/v26.2.0/bin"
+        "$HOME/.local/share/nvm/v24.21.0/bin"
       ];
       macPaths = [
         "$HOME/.local/share/google-cloud-sdk/bin"
