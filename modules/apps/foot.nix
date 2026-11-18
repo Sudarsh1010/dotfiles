@@ -8,7 +8,7 @@
         pad = "10x8";
         line-height = "18";
       };
-      colors = {
+      colors-dark = {
         alpha = 0.95;
         cursor = "1d2021 ebdbb2";
       }

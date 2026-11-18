@@ -172,7 +172,7 @@
         "$HOME/go/bin"
         "$HOME/.cargo/bin"
         # NVM path is version-specific; better to init nvm in shellInit if needed
-        "$HOME/.local/share/nvm/v24.21.0/bin"
+        "$HOME/.local/share/nvm/v26.13.1/bin"
       ];
       macPaths = [
         "$HOME/.local/share/google-cloud-sdk/bin"
@@ -190,7 +190,7 @@
         "$HOME/Android/Sdk/cmdline-tools/latest/bin"
       ];
     in
-    commonPaths ++ (if pkgs.stdenv.isDarwin then macPaths else linuxPaths);
+    commonPaths ++ (if pkgs.stdenv.hostPlatform.isDarwin then macPaths else linuxPaths);
 
   # === Environment Variables ===
   home.sessionVariables =
@@ -199,7 +199,7 @@
         XDG_CONFIG_HOME = "$HOME/.config";
       };
       platformVars =
-        if pkgs.stdenv.isDarwin then
+        if pkgs.stdenv.hostPlatform.isDarwin then
           {
             ANDROID_HOME = "$HOME/Library/Android/sdk";
             PNPM_HOME = "/Users/${username}/Library/pnpm";

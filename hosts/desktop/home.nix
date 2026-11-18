@@ -43,8 +43,7 @@
   ];
 
   home.packages = [
-    # Delta agent workspace — requires the official tarball in the store,
-    # see packages/delta.nix for the one-time nix-prefetch-url step.
-    (pkgs.callPackage ../../packages/delta.nix { })
+    pkgs.stremio-linux-shell
+    pkgs.chatgpt
   ];
 }

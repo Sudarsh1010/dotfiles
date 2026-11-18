@@ -232,7 +232,6 @@
   };
 
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
   ];
 
   # List packages installed in system profile. To search, run:
@@ -243,7 +242,6 @@
       forceWayland = true;
     })
     jdk17
-    ventoy
     android-tools
     docker-compose
     arion

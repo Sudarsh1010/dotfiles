@@ -87,10 +87,10 @@
           unstagedChangesColor = [ config.colorScheme.palette.base08 ];
           # Default text - proper foreground color
           defaultFgColor = [ config.colorScheme.palette.base05 ];
-        };
 
-        authorColors = {
-          "*" = config.colorScheme.palette.base04;
+          authorColors = {
+            "*" = config.colorScheme.palette.base04;
+          };
         };
       };
     };

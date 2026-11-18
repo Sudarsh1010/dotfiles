@@ -14,6 +14,6 @@
     btop
   ];
   home.username = username;
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
   programs.home-manager.enable = true;
 }

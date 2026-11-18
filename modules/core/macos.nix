@@ -6,7 +6,7 @@
 }:
 {
   # Only activate on macOS
-  home.activation.macOSDefaults = lib.mkIf pkgs.stdenv.isDarwin (
+  home.activation.macOSDefaults = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (
     config.lib.dag.entryAfter [ "writeBoundary" ] ''
       /usr/bin/defaults write NSGlobalDomain AppleShowAllExtensions -bool true
       /usr/bin/defaults write NSGlobalDomain KeyRepeat -int 2
